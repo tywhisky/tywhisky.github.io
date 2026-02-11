@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PostgreSQL MySQL on Happy Coding</title>
+    <link>//localhost:1313/categories/postgresql-mysql/</link>
+    <description>Recent content in PostgreSQL MySQL on Happy Coding</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Tainef</copyright>
+    <lastBuildDate>Sun, 06 Aug 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/categories/postgresql-mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Differences between PostgreSQL &amp; MySQL</title>
+      <link>//localhost:1313/posts/the-diff-between-mysql-and-pg/</link>
+      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/the-diff-between-mysql-and-pg/</guid>
+      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;License&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;MySQL&amp;#39;s license is under GPL&lt;/li&gt;&#xA;&lt;li&gt;PostgreSQL is a liberal Open Source license similar to the BSD or MIT licenses.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;GPL is a &lt;em&gt;copyleft&lt;/em&gt; license, for example, one of the reasons why Apple&amp;#39;s Mac OS is not built on top of Linux is because Linux is GPL, which means that OSX would have been forced to be opened sourced, too.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Even though MySQL adopts GPL, some people still are concerned that MySQL is owned by Oracle. It&amp;#39;s also the reason that MariaDB is forked from MySQL.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

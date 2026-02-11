@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>About Redis - Happy Coding</title><link rel="icon" type="image/png" href=favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="
+In the past projects I&#39;ve worked on, Redis has been like a sugar for cache solutions. But as time went on, I&#39;ve just been using it, yeah I know it&#39;s a key-value model database, no SQL here, and I don&#39;t know anything about its other capabilities. So maybe now is a good time to seriously learn Redis.
+
+
+How are the keys and values organized?
+
+
+
+Hash tables. Because this hash table stores all the key-value pairs, I also call it the global hash table." />
+	<meta property="og:image" content="//localhost:1313/"/>
+	<meta property="og:url" content="//localhost:1313/posts/about-redis/">
+  <meta property="og:site_name" content="Happy Coding">
+  <meta property="og:title" content="About Redis">
+  <meta property="og:description" content="In the past projects I&#39;ve worked on, Redis has been like a sugar for cache solutions. But as time went on, I&#39;ve just been using it, yeah I know it&#39;s a key-value model database, no SQL here, and I don&#39;t know anything about its other capabilities. So maybe now is a good time to seriously learn Redis.
+How are the keys and values organized? Hash tables. Because this hash table stores all the key-value pairs, I also call it the global hash table.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-07-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-07-28T00:00:00+00:00">
+    <meta property="article:tag" content="Redis">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About Redis">
+  <meta name="twitter:description" content="In the past projects I&#39;ve worked on, Redis has been like a sugar for cache solutions. But as time went on, I&#39;ve just been using it, yeah I know it&#39;s a key-value model database, no SQL here, and I don&#39;t know anything about its other capabilities. So maybe now is a good time to seriously learn Redis.
+How are the keys and values organized? Hash tables. Because this hash table stores all the key-value pairs, I also call it the global hash table.">
+
+        <link href="//localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="//localhost:1313/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//localhost:1313/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
+		src="//localhost:1313/js/MathJax.js"></script>
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script><link rel="stylesheet" href="//localhost:1313/katex/katex.min.css ">
+		<script defer src="//localhost:1313/katex/katex.min.js"></script>
+		<script defer src="//localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+		</script>
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="//localhost:1313/">Happy Coding</a>
+	</div>
+	<nav>
+		
+		<a href="../../">Home</a>
+		
+		<a href="../../posts">All posts</a>
+		
+		<a href="../../about">About</a>
+		
+		<a href="../../tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+  <article>
+    <div class="post-container">
+      
+      <div class="post-content">
+        <div class="title">
+          <h1 class="title">About Redis</h1>
+          <div class="meta">Posted on Jul 28, 2023</div>
+        </div>
+        
+        <section class="body">
+          
+<p>
+In the past projects I&#39;ve worked on, Redis has been like a sugar for cache solutions. But as time went on, I&#39;ve just been using it, yeah I know it&#39;s a key-value model database, no SQL here, and I don&#39;t know anything about its other capabilities. So maybe now is a good time to seriously learn Redis.</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+How are the keys and values organized?
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+Hash tables. Because this hash table stores all the key-value pairs, I also call it the global hash table.</p>
+<p>
+The lookup process mainly relies on hash calculation (O(1) complexity), and is not directly related to the amount of data. However, after you write a large amount of data to Redis, you may find that the operations sometimes suddenly become slower, because of hash table collisions and the potential blocking caused by rehashing.</p>
+<p>
+To make the rehash operation more efficient, Redis uses two global hash tables by default: hash table 1 and hash table 2. Initially, when you just start inserting data, the default hash table used is hash table 1, and hash table 2 is not yet allocated. As the data gradually increases, Redis begins to perform rehashing, which is a three-step process:</p>
+<ol>
+<li>Allocate a larger space for hash table 2, for example, twice the current size of hash table 1.</li>
+<li>Remap and copy the data from hash table 1 to hash table 2. To avoid blocking user requests during the copy process, Redis adopts a gradual rehashing approach, where it copies the entries from the first index position of hash table 1 to hash table 2 during each user request processing.</li>
+<li>Release the space occupied by hash table 1.</li>
+</ol>
+<p>Since Redis has many data types, and each data type has some common metadata that needs to be recorded (such as the last access time, reference count, etc.), Redis uses a RedisObject struct to uniformly record this metadata, and then point to the actual data. A RedisObject contains 8 bytes of metadata and an 8-byte pointer, which further points to the actual data type. However, there are exceptions to save memory space. For example, for Long integer type and SDS (Simple Dynamic String), Redis has specialized memory layout designs:</p>
+<ul>
+<li>When storing a Long integer type, the pointer in the RedisObject is directly assigned the integer data, so there&#39;s no need for an additional pointer to the integer.</li>
+<li>When storing a string data less than or equal to 44 bytes, the RedisObject&#39;s metadata, pointer, and SDS are in a continuous memory area, which can avoid memory fragmentation.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Persistence/Single-machine High Availability
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+AOF (Append-Only File)
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<ul>
+<li>Records the operations</li>
+<li>Has a small impact on command execution</li>
+<li>But the recovery time is relatively long</li>
+</ul>
+<p>We are familiar with the Write Ahead Log (WAL) in databases, where the modified data is first recorded in the log file before actually writing the data. However, the AOF (Append-Only File) in Redis works the other way around - it is a &#34;write-after&#34; log, meaning Redis first executes the command and writes the data into memory, and then records the log.</p>
+<p>
+The AOF log records every command received by Redis, and these commands are saved in text form. When Redis is recording the log to the AOF, it does not perform any syntax check on the commands. So, if the log is recorded before executing the commands, the log may contain incorrect commands. But with the &#34;write-after&#34; log approach, the system first executes the command, and only records the log if the command execution is successful, otherwise it directly reports an error to the client.</p>
+<p>
+By recording the log after command execution, the current write operation is not blocked.</p>
+<p>
+However, the AOF mechanism also has two potential risks related to when the AOF is written back to the disk:</p>
+<ol>
+<li>If the system crashes immediately after executing a command, but before the log is recorded, there is a risk of losing that command and the corresponding data.</li>
+<li>Although the AOF avoids blocking the current command, it may introduce a blocking risk for the next operation. This is because the AOF log is also executed in the main thread, and if the disk write pressure is high, the disk write may become very slow, causing subsequent operations to also be unable to execute.</li>
+</ol>
+<p>To address this, the AOF mechanism provides three choices to control the timing of writing to the disk, corresponding to the appendfsync configuration (similar to configurations in MySQL&#39;s redo log/binary log):</p>
+<ol>
+<li>Always: Synchronously write the log to disk after each write command.</li>
+<li>Everysec: After each write command, just write the log to the AOF file&#39;s memory buffer, and write the buffer to disk every second.</li>
+<li>No: After each write command, just write the log to the AOF file&#39;s memory buffer, and let the operating system decide when to write the buffer to disk.</li>
+</ol>
+<p>What if the AOF log file becomes too large? The AOF rewrite mechanism comes into play.</p>
+<p>
+The AOF rewrite mechanism rewrites the AOF file based on the current state of the database. It reads all the key-value pairs in the database and records them with a single command in the new AOF file, even if a key has been modified multiple times.</p>
+<p>
+During the rewrite, the main thread forks a background bgrewriteaof subprocess. The fork will copy the main thread&#39;s memory, which contains the latest database data, to the subprocess. Then the bgrewriteaof subprocess can rewrite the log without affecting the main thread&#39;s processing of new operations. If there are any new write operations during the rewrite, they will be written to both the existing AOF log and the rewrite log. Once the rewrite is complete, the new AOF file can replace the old one.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+RDB (Redis Database Backup):
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<ul>
+<li>Records the data at a certain point in time</li>
+<li>The recovery time is relatively short</li>
+</ul>
+<p>
+The RDB (Redis Database Backup) file is a way to write the state of the database at a certain point in time to disk as a file. During data restoration, you can directly read the RDB file into memory to quickly complete the recovery.</p>
+<p>
+Redis provides two commands to generate the RDB file: save and bgsave.</p>
+<p>
+save: Executes in the main thread, which will cause blocking.
+bgsave: Creates a child process dedicated to writing the RDB file, avoiding blocking the main thread. This is the default configuration for generating the Redis RDB file.</p>
+<p>
+In the bgsave case, the main thread is not blocked and can still receive requests normally. However, to ensure the integrity of the snapshot, it can only handle read operations and cannot modify the data being snapshotted.</p>
+<p>
+Copy-On-Write (COW): To suspend write operations for the snapshot is definitely unacceptable. The bgsave child process is forked from the main thread, so it can share all of the main thread&#39;s memory data. After the bgsave child process starts running, it begins to read the main thread&#39;s memory data and write it to the RDB file. If the main thread needs to modify a piece of data, that data will be copied to create a duplicate. Then the bgsave child process will write this duplicate data to the RDB file. (This is similar to the main thread writing to both the AOF log and the AOF rewrite log.)</p>
+<p>
+The frequency of snapshots is not easy to grasp. If the frequency is too low, there could be a lot of data loss in the event of a crash between two snapshots. If full snapshots are performed frequently, it will also bring two kinds of overhead. One is that the frequent full data writes to disk will put a lot of pressure on the disk, and multiple snapshots competing for limited disk bandwidth may cause a vicious cycle where the next snapshot starts before the previous one is complete. The other is that the fork operation to create the bgsave child process will block the main thread, and the longer the main thread&#39;s memory, the longer the blocking time (so when using RDB, the memory of a single Redis instance should not be too large).</p>
+<p>
+Is there a win-win solution? Redis 4.0 introduced a hybrid approach using both AOF logs and in-memory snapshots. In simple terms, in-memory snapshots are executed at a certain frequency, and during the interval between two snapshots, the AOF log records all the command operations.</p>
+<p>
+Although fsync is executed by a background child thread, the main thread will monitor the progress of fsync. When the main thread uses the background child thread to execute an fsync, and needs to write the newly received operations to disk again, if the main thread finds that the previous fsync is not yet complete, it will block. So if the fsync executed by the background child thread is frequently blocked (for example, if the AOF rewrite occupies a lot of disk I/O bandwidth), the main thread will also be blocked, causing Redis performance to slow down.</p>
+<p>
+Redis is an in-memory database, and if the memory usage is not controlled well, or if it is running together with other memory-intensive applications, it may be affected by swapping, causing performance to slow down. Once swapping is triggered, Redis requests have to wait for the disk data read/write to complete.</p>
+<p>
+The Linux kernel has supported the large page mechanism since version 2.6.38, which supports 2MB large memory pages, while the regular memory page allocation is executed in 4KB granularity. If large pages are used, when Redis does copy-on-write, even if the client request only modifies 100B of data, Redis still needs to copy a 2MB large page. What to do? Disable large pages.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-2">
+<h2 id="headline-5">
+Sharded Cluster
+</h2>
+<div id="outline-text-headline-5" class="outline-text-2">
+<p>
+The Redis Cluster solution uses hash slots (Hash Slot, I&#39;ll just call it Slot) to handle the mapping between data and instances. A sharded cluster has a total of 16384 hash slots. The key of a key-value pair is hashed using the CRC16 algorithm to produce a 16-bit value, which is then used to calculate the slot by taking the modulus with 16384.</p>
+<p>
+When deploying the Redis Cluster solution, you can use the cluster create command to create the cluster, and Redis will automatically distribute these slots evenly across the cluster instances (although you can also configure them manually). Through the hash slots, the sharded cluster implements the mapping from data to hash slots, and then from hash slots to instances.</p>
+<p>
+How do you know which instance a hash slot is on? Redis instances will send their hash slot information to the other connected instances, to propagate the slot allocation information. After the instances are interconnected, each instance will have the mapping information for all the hash slots.</p>
+<p>
+Clients will cache the hash slot information locally after receiving it. When a client requests a key-value pair, it will first calculate the hash slot of the key, and then send the request to the corresponding instance.</p>
+<p>
+In the cluster, the mapping between instances and hash slots is not fixed, as there can be node additions/deletions and load balancing. Instances can still exchange messages to obtain the latest hash slot allocation information, but clients cannot actively perceive these changes.</p>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-2">
+<h2 id="headline-6">
+Buffer in Redis
+</h2>
+<div id="outline-text-headline-6" class="outline-text-2">
+<p>
+The buffer is a key application scenario in Redis for temporarily storing command data sent by the client, or the data results returned by the server, during communication between the client and the server.</p>
+<p>
+Another major application scenario for the buffer is during data synchronization between master and slave nodes, where it is used to temporarily store the write commands and data received by the master node.</p>
+<p>
+Buffer overflow can lead to network connection closure and data loss. There are three main reasons for buffer overflow:</p>
+<ol>
+<li>Commands are sent too quickly or are too large.</li>
+<li>Command data processing is too slow.</li>
+<li>The buffer space is too small.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
+<h2 id="headline-7">
+Use case for transactions in Redis:
+</h2>
+<div id="outline-text-headline-7" class="outline-text-2">
+<p>
+The data structures in Redis each have their own characteristics. In certain scenarios, a piece of data may need to be stored in multiple data structures to simultaneously satisfy the needs for read/write performance and special operation commands (such as range queries, counting, etc.).</p>
+<p>
+In this case, transactions can be used to ensure the atomicity of these multiple operations on different data structures. The basic workflow is:</p>
+<ul>
+<li>Start the transaction with the MULTI command.</li>
+<li>Execute the desired commands (e.g. DECR a:stock, DECR b:stock) - these will be queued without executing.</li>
+<li>Commit the transaction with the EXEC command - this will execute all the queued commands atomically.</li>
+<li>Redis supports transactions through the MULTI, EXEC, DISCARD and WATCH commands, and the level of ACID guarantee is as follows:</li>
+</ul>
+<p>Atomicity:</p>
+<ul>
+<li>If there are errors when queuing the commands, the entire transaction will be abandoned, ensuring atomicity.</li>
+<li>If there are no errors when queuing, but errors occur during actual execution, atomicity cannot be guaranteed.</li>
+<li>If the EXEC command encounters a server failure, and AOF logging is enabled, atomicity can be ensured.</li>
+</ul>
+<p>Consistency:</p>
+<ul>
+<li>Redis transactions do provide consistency guarantees:</li>
+<li>If there are errors when queuing the commands, the database remains consistent.</li>
+<li>If there are no errors when queuing, but errors occur during actual execution, the database remains consistent.</li>
+<li>If the server fails after the EXEC command but before the changes are persisted (no RDB/AOF), the database remains consistent upon restart.</li>
+</ul>
+<p>Isolation:</p>
+<ul>
+<li>If concurrent operations (Client Y) happen before the EXEC command (Client X), isolation can be achieved using the WATCH mechanism. WATCH monitors the key values and aborts the transaction if any monitored key has been modified, ensuring isolation.</li>
+<li>If the concurrent operations (Client Y) happen after the EXEC command (Client X), isolation is guaranteed because Redis executes commands sequentially in the single-threaded model.</li>
+</ul>
+</div>
+</div>
+
+        </section>
+        <div class="post-tags">
+          
+          
+          
+        </div>
+      </div>
+
+      
+      
+    </div>
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'yourDisqusShortname';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/tywhisky" rel="me" title="GitHub"><svg class="feather">
+       <use href="../../svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
+    </svg></a><a class="border"></a></div>
+  <div class="footer-info">
+    2026  Tainef |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+</div>
+    </body>
+</html>

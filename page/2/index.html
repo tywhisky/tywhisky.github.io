@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Happy Coding | Home </title><link rel="icon" type="image/png" href=favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta property="og:image" content="//localhost:1313/"/>
+	<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="Happy Coding" />
+	<meta property="og:url" content="//localhost:1313/">
+  <meta property="og:site_name" content="Happy Coding">
+  <meta property="og:title" content="Happy Coding">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Happy Coding">
+
+        <link href="//localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="//localhost:1313/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//localhost:1313/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
+		src="//localhost:1313/js/MathJax.js"></script>
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script><link rel="stylesheet" href="//localhost:1313/katex/katex.min.css ">
+		<script defer src="//localhost:1313/katex/katex.min.js"></script>
+		<script defer src="//localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+		</script>
+</head>
+
+	<body>
+		<div class="content">
+			<header>
+	<div class="main">
+		<a href="//localhost:1313/">Happy Coding</a>
+	</div>
+	<nav>
+		
+		<a href="../../">Home</a>
+		
+		<a href="../../posts">All posts</a>
+		
+		<a href="../../about">About</a>
+		
+		<a href="../../tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+			
+			<main class="list">
+				<div class="site-description"><p>Hey, I am TianYu, a web developer with fanatical code cleanliness. Growing up, living, and working in Shanghai. <!-- raw HTML omitted --><!-- raw HTML omitted --> It&rsquo;s an honour to me that you here. This blog is made up with <!-- raw HTML omitted -->Emacs<!-- raw HTML omitted --> (<!-- raw HTML omitted -->Org mode<!-- raw HTML omitted -->) and <!-- raw HTML omitted -->Hugo<!-- raw HTML omitted -->, it is used to record my life, study and programming. Feel free to linger and explore! <!-- raw HTML omitted --><!-- raw HTML omitted --> Outside of programming, I enjoy playing badminton and video games with any type.  If you are interested in these too, I would be glad to chat with you!</p></div>
+				
+				
+				
+				<section class="list-item">
+					<h1 class="title"><a href="../../posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/">PostgreSQL 索引总结</a></h1>
+					<time>Dec 24, 2023</time>
+					<br><div class="description">
+	
+	<p>
+Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对
+所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。</p>
+<p>
+索引是一种从数据表中高效检索数据的方式，他只在相关联的数据量相对小时比较有用（也就是说，检索行的条件 - the WHERE clause - 是选择性的）。B-tree 索引也通常用于避免排序。</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+索引类型
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+Postgres 支持多种不同类型的索引：</p>
+<p>
+– B-Tree：这是当你使用 `CREATE INDEX` 时默认的得到的索引类型。几乎所有的数据库都有 B-tree 类型的索引。
+B-trees 会试图保持平衡，树的每个分支中的数据量大致相同。因此，为找到行而必须遍历的级别数始终在同一范围内。
+B-tree 索引能够有效的用于相等下的范围查询。它们可以对所有数据类型进行操作，也可用于检索 NULL 值。B 树设计为可以很好地处理缓存，即使只缓存了一部分。</p>
+<p>
+– Hash Indexes：Postgres 10 之前的 Hash 索引只对等式比较有用，但是它们不是事务安全的，在崩溃之后必须手动重建。</p>
+<p>
+– Generalized Inverted Indexes (GIN)：GIN 索引对于必须映射许多值到一条数据上时非常有用。
+就像 B-tree 索引被优化用于一条数据只有单个 key value，GINs 索引在 array 类型的数据上的良好变现也会很适合大文本搜索。</p>
+<p>
+– Generalized Search Tree (GiST) GiST 索引允许创建传统的平衡树结构，用于等价的和范围查询。很适合地理数据类型的大文本搜索。</p>
+<p>
+我们这里主要讨论默认的 B-Tree 索引。</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+为什么我的查询没有使用索引？
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。</p>
+<p>
+For example:</p>&hellip;
+	
+</div>
+					<a class="readmore" href="../../posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/">Read more ⟶</a>
+				</section>
+				
+				<section class="list-item">
+					<h1 class="title"><a href="../../posts/thoughts-on-unit-testing/">Thoughts on Unit Testing</a></h1>
+					<time>Aug 27, 2023</time>
+					<br><div class="description">
+	
+	<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Writing Unit Tests Saves You Time in the Long Run
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+For those who don&#39;t often write unit tests, the common thought is usually: &#34;Writing tests is too time-consuming.&#34; In the short term, this might seem true, but unit tests save you a lot of time in the future.</p>
+<p>
+Without tests, refactoring can be a daunting task. You have to carefully test every scenario manually. If you&#39;re not careful, you might introduce new bugs during the refactoring process. Moreover, you need to ensure that your changes don&#39;t break other related functionalities. This alone can consume a significant amount of your time.</p>&hellip;
+	
+</div>
+					<a class="readmore" href="../../posts/thoughts-on-unit-testing/">Read more ⟶</a>
+				</section>
+				
+				<section class="list-item">
+					<h1 class="title"><a href="../../posts/the-diff-between-mysql-and-pg/">Differences between PostgreSQL &amp; MySQL</a></h1>
+					<time>Aug 6, 2023</time>
+					<br><div class="description">
+	
+	<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+License
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<ul>
+<li>MySQL&#39;s license is under GPL</li>
+<li>PostgreSQL is a liberal Open Source license similar to the BSD or MIT licenses.</li>
+</ul>
+<p>GPL is a <em>copyleft</em> license, for example, one of the reasons why Apple&#39;s Mac OS is not built on top of Linux is because Linux is GPL, which means that OSX would have been forced to be opened sourced, too.</p>
+<p>
+Even though MySQL adopts GPL, some people still are concerned that MySQL is owned by Oracle. It&#39;s also the reason that MariaDB is forked from MySQL.</p>&hellip;
+	
+</div>
+					<a class="readmore" href="../../posts/the-diff-between-mysql-and-pg/">Read more ⟶</a>
+				</section>
+				
+				
+
+<ul class="pagination">
+	<span class="page-item page-prev">
+	
+    <a href="../../" class="page-link" aria-label="Previous"><span aria-hidden="true">← Prev</span></a>
+	
+	</span>
+	<span class="page-item page-next">
+	
+    <a href="../../page/3/" class="page-link" aria-label="Next"><span aria-hidden="true">Next →</span></a>
+	
+	</span>
+</ul>
+
+
+			</main>
+			<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/tywhisky" rel="me" title="GitHub"><svg class="feather">
+       <use href="../../svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
+    </svg></a><a class="border"></a></div>
+  <div class="footer-info">
+    2026  Tainef |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+		</div>
+		
+	</body>
+</html>

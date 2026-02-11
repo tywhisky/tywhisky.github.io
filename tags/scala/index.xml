@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scala on Happy Coding</title>
+    <link>//localhost:1313/tags/scala/</link>
+    <description>Recent content in Scala on Happy Coding</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Tainef</copyright>
+    <lastBuildDate>Tue, 27 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Scala] `class` and `case class`</title>
+      <link>//localhost:1313/posts/scala-calss-and-case-class/</link>
+      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/scala-calss-and-case-class/</guid>
+      <description>&lt;p&gt;&#xA;In Scala, there are two types of classes: normal classes and case classes. Here are the main differences between them:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Boilerplate code: Case classes generate a lot of boilerplate code automatically, such as equals, hashCode, toString, and a copy method. Normal classes don&amp;#39;t have this automatic generation of code, so you have to write it yourself.&lt;/li&gt;&#xA;&lt;li&gt;Immutability: By default, case classes are immutable, meaning that their fields cannot be changed after they are created. Normal classes, on the other hand, can be either mutable or immutable, depending on how you define them.&lt;/li&gt;&#xA;&lt;li&gt;Pattern matching: Case classes are designed to work well with pattern matching, because they have a built-in unapply method that allows you to extract their fields. Normal classes don&amp;#39;t have this method, so you need to define your own extractor object or method if you want to use them in pattern matching.&lt;/li&gt;&#xA;&lt;li&gt;Default arguments: Case classes allow you to define default values for their constructor arguments, making it easier to create instances of the class. Normal classes don&amp;#39;t have this feature.&lt;/li&gt;&#xA;&lt;li&gt;Inheritance: Case classes can inherit from other classes or traits, but they are not recommended for use in complex inheritance hierarchies. Normal classes are more flexible in this regard.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;Overall&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;case classes are a convenient way to define simple data structures that are immutable and can be easily used with pattern matching. If you need more flexibility or functionality, such as mutable state or complex inheritance, you should use a normal class instead.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

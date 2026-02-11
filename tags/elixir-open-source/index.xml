@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elixir, Open Source on Happy Coding</title>
+    <link>//localhost:1313/tags/elixir-open-source/</link>
+    <description>Recent content in Elixir, Open Source on Happy Coding</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Tainef</copyright>
+    <lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/elixir-open-source/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记一次在 Elixir 上的开源工作</title>
+      <link>//localhost:1313/posts/my-first-work-on-open-source-for-elixir/</link>
+      <pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/my-first-work-on-open-source-for-elixir/</guid>
+      <description>&lt;p&gt;&#xA;前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

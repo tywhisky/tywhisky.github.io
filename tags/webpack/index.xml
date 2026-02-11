@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Webpack on Happy Coding</title>
+    <link>//localhost:1313/tags/webpack/</link>
+    <description>Recent content in Webpack on Happy Coding</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Tainef</copyright>
+    <lastBuildDate>Fri, 15 Oct 2021 11:30:03 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Hot Reloading with Webpack and Phoenix</title>
+      <link>//localhost:1313/posts/how-hot-reloading-for-phoenix-project/</link>
+      <pubDate>Fri, 15 Oct 2021 11:30:03 +0000</pubDate>
+      <guid>//localhost:1313/posts/how-hot-reloading-for-phoenix-project/</guid>
+      <description>&lt;h3 id=&#34;live-reloading-和-hot-reloading-的区别&#34;&gt;Live Reloading 和 Hot Reloading 的区别&lt;/h3&gt;&#xA;&lt;p&gt;Live Reloading是在浏览器进行更改后自动重新加载整个页面，使开发者不再需要切换浏览器手动点击 &lt;code&gt;cmd + r&lt;/code&gt; 。在这点上 Phoenix 通过 Phoenix LiveReload 可以提供开箱即用的支持，通过 &lt;code&gt;mix phx.new&lt;/code&gt; 创建的项目默认配置了 Phoenix LiveReload。&lt;/p&gt;&#xA;&lt;p&gt;但是，Live Reloading依然存在一个缺点，在开发现在越来越高度交互的 Web 应用时，频繁的代码改动与调试，意味着频繁的重新加载整个页面，很多情况你也许只希望修改一些样式，Live Reloading会显得尤为耗时，而为了解决这个问题，Hot Reloading 显得尤为重要。&lt;/p&gt;&#xA;&lt;h3 id=&#34;注意事项&#34;&gt;注意事项&lt;/h3&gt;&#xA;&lt;p&gt;本文通过 React + Webpack 进行配置举例（因为自身业务），以前 React 的 Hot Reloading 是通过 &lt;code&gt;HMR&lt;/code&gt; (Hot Module Replacement) 实现的，因为一些&lt;a href=&#34;https://github.com/facebook/react/blob/f5d946da6be8d0cefd66ab3d029a55ab54ebb460/packages/react-refresh/README.md&#34;&gt;技术原因&lt;/a&gt;不再使用这种方法。&lt;/p&gt;&#xA;&lt;p&gt;我们将使用 @pmmmwh/react-refresh-webpack-plugin 这个实验性的 Webpack 插件来实现，虽然这个插件在运行一段时间后，&lt;code&gt;webpack-dev-server&lt;/code&gt; 最终会吃掉大量内存，但是依然可以通过合适的配置和手动刷新，使其成为一个强大的工具。&lt;/p&gt;&#xA;&lt;h3 id=&#34;npm&#34;&gt;NPM&lt;/h3&gt;&#xA;&lt;p&gt;首先在你的前端项目中执行，如果你是用的是 &lt;code&gt;yarn&lt;/code&gt; 请自行修改命令&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install --save-dev @pmmmwh/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;react-refresh-webpack-plugin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;webpack-dev-server react-refresh&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;react-refresh-typescript&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;webpack-配置&#34;&gt;Webpack 配置&lt;/h3&gt;&#xA;&lt;p&gt;在逻辑结构上我们将把 &lt;code&gt;webpack-dev-server&lt;/code&gt; 置于 Phoenix 应用之前。使 Webpack 能够将 websocket 注入页面，以便在需要进行 Hot Reloading 时通知浏览器。为了更好地理解，我们配置 &lt;code&gt;webpack-dev-server&lt;/code&gt; 启动在 4000 端口并且代理所有的请求到 4001 端口，也就是我们 Phoenix 应用运行的端口。所以现在浏览器仍然像 &lt;code&gt;http://localhost:4000&lt;/code&gt; 发出请求，但是将会被透明代理到 Phoenix。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
