@@ -1,20 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Testing on Happy Coding</title>
-    <link>//localhost:1313/categories/testing/</link>
-    <description>Recent content in Testing on Happy Coding</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>Tainef</copyright>
-    <lastBuildDate>Sun, 27 Aug 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/categories/testing/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Thoughts on Unit Testing</title>
-      <link>//localhost:1313/posts/thoughts-on-unit-testing/</link>
-      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/thoughts-on-unit-testing/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;Writing Unit Tests Saves You Time in the Long Run&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;For those who don&amp;#39;t often write unit tests, the common thought is usually: &amp;#34;Writing tests is too time-consuming.&amp;#34; In the short term, this might seem true, but unit tests save you a lot of time in the future.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Without tests, refactoring can be a daunting task. You have to carefully test every scenario manually. If you&amp;#39;re not careful, you might introduce new bugs during the refactoring process. Moreover, you need to ensure that your changes don&amp;#39;t break other related functionalities. This alone can consume a significant amount of your time.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Testing on Happy Coding</title><link>//tywhisky.github.io/categories/testing/</link><description>Recent content in Testing on Happy Coding</description><generator>Hugo</generator><language>en-us</language><copyright>Tainef</copyright><lastBuildDate>Sun, 27 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="//tywhisky.github.io/categories/testing/index.xml" rel="self" type="application/rss+xml"/><item><title>Thoughts on Unit Testing</title><link>//tywhisky.github.io/posts/thoughts-on-unit-testing/</link><pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/thoughts-on-unit-testing/</guid><description>&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+Writing Unit Tests Saves You Time in the Long Run
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+For those who don&amp;#39;t often write unit tests, the common thought is usually: &amp;#34;Writing tests is too time-consuming.&amp;#34; In the short term, this might seem true, but unit tests save you a lot of time in the future.&lt;/p&gt;
+&lt;p&gt;
+Without tests, refactoring can be a daunting task. You have to carefully test every scenario manually. If you&amp;#39;re not careful, you might introduce new bugs during the refactoring process. Moreover, you need to ensure that your changes don&amp;#39;t break other related functionalities. This alone can consume a significant amount of your time.&lt;/p&gt;</description></item></channel></rss>

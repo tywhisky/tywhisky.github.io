@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>PostgreSQL 分区和分片 - Happy Coding</title><link rel="icon" type="image/png" href=favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="
+<!doctype html><html><head lang=en><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>PostgreSQL 分区和分片 - Happy Coding</title><link rel=icon type=image/png href=favicon.ico><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
 
 分区
 
@@ -22,7 +18,7 @@
  – 决定应创建哪些新分区（如果有的话）并创建它们，提前三天将未来的分区调出来，为操作提供一些缓冲，以防出错。
 
 CREATE TABLE widget_20221005 PARTITION OF widget
-  FOR VALUES FROM (&#39;2022-10-05&#39;) TO (&#39;2022-10-06&#39;);
+  FOR VALUES FROM ('2022-10-05') TO ('2022-10-06');
 
 
 ALTER TABLE widget DETACH partition widget_20221005;
@@ -52,54 +48,29 @@ INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用�
 create extension citus;
 
 
-SELECT create_distributed_table(&#39;table&#39;, &#39;shard_column&#39;, shard_count := 256);
+SELECT create_distributed_table('table', 'shard_column', shard_count := 256);
 
 
-SELECT * FROM citus_add_node(&#39;worker_node_address&#39;, &#39;192.168.0.2&#39;);
+SELECT * FROM citus_add_node('worker_node_address', '192.168.0.2');
 
 
 rebalance:
 SELECT rebalance_table_shards();
 
 
-除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。" />
-	<meta property="og:image" content="//localhost:1313/"/>
-	<meta property="og:url" content="//localhost:1313/posts/partition-and-shading-on-postgresql/">
-  <meta property="og:site_name" content="Happy Coding">
-  <meta property="og:title" content="PostgreSQL 分区和分片">
-  <meta property="og:description" content="分区 分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。
+除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。"><meta property="og:image" content="//tywhisky.github.io/"><meta property="og:url" content="//tywhisky.github.io/posts/partition-and-shading-on-postgresql/"><meta property="og:site_name" content="Happy Coding"><meta property="og:title" content="PostgreSQL 分区和分片"><meta property="og:description" content="分区 分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。
 在 PostgreSQL 下拥有 Hot Table 隐患时进行删除操作是很灾难性的，一个长期运行的查询将会遍历每一条数据，标记为 dead 后执行操作，在这过程中不会释放任何空间。但有了分区，删除就变成了简单的 DROP TABLE。 它可以立即执行，成本可以忽略不计（分区还有其他好处）。当然，代价是需要重点维护。
 分区操作 – 列出所有已存在的表
 – 决定应创建哪些新分区（如果有的话）并创建它们，提前三天将未来的分区调出来，为操作提供一些缓冲，以防出错。
-CREATE TABLE widget_20221005 PARTITION OF widget FOR VALUES FROM (&#39;2022-10-05&#39;) TO (&#39;2022-10-06&#39;); ALTER TABLE widget DETACH partition widget_20221005; DROP TABLE widget_20221005; INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。
+CREATE TABLE widget_20221005 PARTITION OF widget FOR VALUES FROM ('2022-10-05') TO ('2022-10-06'); ALTER TABLE widget DETACH partition widget_20221005; DROP TABLE widget_20221005; INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。
 分片 一种将 Postgres 数据库表分割成更小表的技术，通常用于在组成数据库实例集群的多个节点上横向分发数据，更多部署在多节点集群。
-使用 Citus 分片操作 create extension citus; SELECT create_distributed_table(&#39;table&#39;, &#39;shard_column&#39;, shard_count := 256); SELECT * FROM citus_add_node(&#39;worker_node_address&#39;, &#39;192.168.0.2&#39;); rebalance: SELECT rebalance_table_shards(); 除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-01-10T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-01-10T00:00:00+00:00">
-    <meta property="article:tag" content="Postgresql">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="PostgreSQL 分区和分片">
-  <meta name="twitter:description" content="分区 分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。
+使用 Citus 分片操作 create extension citus; SELECT create_distributed_table('table', 'shard_column', shard_count := 256); SELECT * FROM citus_add_node('worker_node_address', '192.168.0.2'); rebalance: SELECT rebalance_table_shards(); 除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-01-10T00:00:00+00:00"><meta property="article:modified_time" content="2024-01-10T00:00:00+00:00"><meta property="article:tag" content="Postgresql"><meta name=twitter:card content="summary"><meta name=twitter:title content="PostgreSQL 分区和分片"><meta name=twitter:description content="分区 分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。
 在 PostgreSQL 下拥有 Hot Table 隐患时进行删除操作是很灾难性的，一个长期运行的查询将会遍历每一条数据，标记为 dead 后执行操作，在这过程中不会释放任何空间。但有了分区，删除就变成了简单的 DROP TABLE。 它可以立即执行，成本可以忽略不计（分区还有其他好处）。当然，代价是需要重点维护。
 分区操作 – 列出所有已存在的表
 – 决定应创建哪些新分区（如果有的话）并创建它们，提前三天将未来的分区调出来，为操作提供一些缓冲，以防出错。
-CREATE TABLE widget_20221005 PARTITION OF widget FOR VALUES FROM (&#39;2022-10-05&#39;) TO (&#39;2022-10-06&#39;); ALTER TABLE widget DETACH partition widget_20221005; DROP TABLE widget_20221005; INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。
+CREATE TABLE widget_20221005 PARTITION OF widget FOR VALUES FROM ('2022-10-05') TO ('2022-10-06'); ALTER TABLE widget DETACH partition widget_20221005; DROP TABLE widget_20221005; INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。
 分片 一种将 Postgres 数据库表分割成更小表的技术，通常用于在组成数据库实例集群的多个节点上横向分发数据，更多部署在多节点集群。
-使用 Citus 分片操作 create extension citus; SELECT create_distributed_table(&#39;table&#39;, &#39;shard_column&#39;, shard_count := 256); SELECT * FROM citus_add_node(&#39;worker_node_address&#39;, &#39;192.168.0.2&#39;); rebalance: SELECT rebalance_table_shards(); 除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。">
-
-        <link href="//localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
-	
-
-	
-	<link rel="stylesheet" type="text/css" media="screen" href="//localhost:1313/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css" />
-		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//localhost:1313/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
-		src="//localhost:1313/js/MathJax.js"></script>
-		
-		<script type="text/x-mathjax-config">
+使用 Citus 分片操作 create extension citus; SELECT create_distributed_table('table', 'shard_column', shard_count := 256); SELECT * FROM citus_add_node('worker_node_address', '192.168.0.2'); rebalance: SELECT rebalance_table_shards(); 除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。"><link href=//tywhisky.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css rel=stylesheet><link rel=stylesheet type=text/css media=screen href=//tywhisky.github.io/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css><link id=darkModeStyle rel=stylesheet type=text/css href=//tywhisky.github.io/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css media="(prefers-color-scheme: dark)"><script type=text/javascript src=//tywhisky.github.io/js/MathJax.js></script><script type=text/x-mathjax-config>
 		MathJax.Hub.Config({
 			tex2jax: {
 				inlineMath: [['$','$'], ['\\(','\\)']],
@@ -111,161 +82,10 @@ CREATE TABLE widget_20221005 PARTITION OF widget FOR VALUES FROM (&#39;2022-10-0
 						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
 			}
 		});
-		</script><link rel="stylesheet" href="//localhost:1313/katex/katex.min.css ">
-		<script defer src="//localhost:1313/katex/katex.min.js"></script>
-		<script defer src="//localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-		
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-					renderMathInElement(document.body, {
-							delimiters: [
-									{left: "$$", right: "$$", display: true},
-									{left: "$", right: "$", display: false}
-							]
-					});
-			});
-		</script>
-</head>
-<body>
-        <div class="content"><header>
-	<div class="main">
-		<a href="//localhost:1313/">Happy Coding</a>
-	</div>
-	<nav>
-		
-		<a href="../../">Home</a>
-		
-		<a href="../../posts">All posts</a>
-		
-		<a href="../../about">About</a>
-		
-		<a href="../../tags">Tags</a>
-		
-		
-	</nav>
-</header>
-
-<main>
-  <article>
-    <div class="post-container">
-      
-      <div class="post-content">
-        <div class="title">
-          <h1 class="title">PostgreSQL 分区和分片</h1>
-          <div class="meta">Posted on Jan 10, 2024</div>
-        </div>
-        
-        <section class="body">
-          
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-分区
-</h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。</p>
-<p>
-在 PostgreSQL 下拥有 Hot Table 隐患时进行删除操作是很灾难性的，一个长期运行的查询将会遍历每一条数据，标记为 dead 后执行操作，在这过程中不会释放任何空间。但有了分区，删除就变成了简单的 DROP TABLE。 它可以立即执行，成本可以忽略不计（分区还有其他好处）。当然，代价是需要重点维护。</p>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
-分区操作
-</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
-<p>
- – 列出所有已存在的表</p>
-<p>
- – 决定应创建哪些新分区（如果有的话）并创建它们，提前三天将未来的分区调出来，为操作提供一些缓冲，以防出错。</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> widget_20221005 PARTITION <span style="color:#66d9ef">OF</span> widget
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">VALUES</span> <span style="color:#66d9ef">FROM</span> (<span style="color:#e6db74">&#39;2022-10-05&#39;</span>) <span style="color:#66d9ef">TO</span> (<span style="color:#e6db74">&#39;2022-10-06&#39;</span>);</span></span></code></pre></div>
-</div>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> widget DETACH partition widget_20221005;</span></span></code></pre></div>
-</div>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DROP</span> <span style="color:#66d9ef">TABLE</span> widget_20221005;</span></span></code></pre></div>
-</div>
-<p>
-INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-2">
-<h2 id="headline-3">
-分片
-</h2>
-<div id="outline-text-headline-3" class="outline-text-2">
-<p>
-一种将 Postgres 数据库表分割成更小表的技术，通常用于在组成数据库实例集群的多个节点上横向分发数据，更多部署在多节点集群。</p>
-<div id="outline-container-headline-4" class="outline-3">
-<h3 id="headline-4">
-使用 Citus 分片操作
-</h3>
-<div id="outline-text-headline-4" class="outline-text-3">
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> extension citus;</span></span></code></pre></div>
-</div>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> create_distributed_table(<span style="color:#e6db74">&#39;table&#39;</span>, <span style="color:#e6db74">&#39;shard_column&#39;</span>, shard_count :<span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>);</span></span></code></pre></div>
-</div>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> citus_add_node(<span style="color:#e6db74">&#39;worker_node_address&#39;</span>, <span style="color:#e6db74">&#39;192.168.0.2&#39;</span>);</span></span></code></pre></div>
-</div>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>rebalance:
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> rebalance_table_shards();</span></span></code></pre></div>
-</div>
-<p>
-除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。</p>
-</div>
-</div>
-</div>
-</div>
-
-        </section>
-        <div class="post-tags">
-          
-          
-          
-        </div>
-      </div>
-
-      
-      
-    </div>
-
-    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    (function () {
-        
-        
-        if (window.location.hostname == "localhost")
-            return;
-
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        var disqus_shortname = 'yourDisqusShortname';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-        Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</article>
-</main>
-<footer>
-  <div style="display:flex"><a class="soc" href="https://github.com/tywhisky" rel="me" title="GitHub"><svg class="feather">
-       <use href="../../svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
-    </svg></a><a class="border"></a></div>
-  <div class="footer-info">
-    2026  Tainef |  <a
-      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
-  </div>
-</footer>
-
-</div>
-    </body>
-</html>
+		</script><link rel=stylesheet href=//tywhisky.github.io/katex/katex.min.css><script defer src=//tywhisky.github.io/katex/katex.min.js></script><script defer src=//tywhisky.github.io/katex/auto-render.min.js onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></head><body><div class=content><header><div class=main><a href=//tywhisky.github.io/>Happy Coding</a></div><nav><a href=//tywhisky.github.io/>Home</a>
+<a href=//tywhisky.github.io/posts>All posts</a>
+<a href=//tywhisky.github.io/about>About</a>
+<a href=//tywhisky.github.io/tags>Tags</a></nav></header><main><article><div class=post-container><div class=post-content><div class=title><h1 class=title>PostgreSQL 分区和分片</h1><div class=meta>Posted on Jan 10, 2024</div></div><section class=body><div id=outline-container-headline-1 class=outline-2><h2 id=headline-1>分区</h2><div id=outline-text-headline-1 class=outline-text-2><p>分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。</p><p>在 PostgreSQL 下拥有 Hot Table 隐患时进行删除操作是很灾难性的，一个长期运行的查询将会遍历每一条数据，标记为 dead 后执行操作，在这过程中不会释放任何空间。但有了分区，删除就变成了简单的 DROP TABLE。 它可以立即执行，成本可以忽略不计（分区还有其他好处）。当然，代价是需要重点维护。</p><div id=outline-container-headline-2 class=outline-3><h3 id=headline-2>分区操作</h3><div id=outline-text-headline-2 class=outline-text-3><p>– 列出所有已存在的表</p><p>– 决定应创建哪些新分区（如果有的话）并创建它们，提前三天将未来的分区调出来，为操作提供一些缓冲，以防出错。</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> widget_20221005 PARTITION <span style=color:#66d9ef>OF</span> widget
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>FOR</span> <span style=color:#66d9ef>VALUES</span> <span style=color:#66d9ef>FROM</span> (<span style=color:#e6db74>&#39;2022-10-05&#39;</span>) <span style=color:#66d9ef>TO</span> (<span style=color:#e6db74>&#39;2022-10-06&#39;</span>);</span></span></code></pre></div></div><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>ALTER</span> <span style=color:#66d9ef>TABLE</span> widget DETACH partition widget_20221005;</span></span></code></pre></div></div><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>DROP</span> <span style=color:#66d9ef>TABLE</span> widget_20221005;</span></span></code></pre></div></div><p>INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。</p></div></div></div></div><div id=outline-container-headline-3 class=outline-2><h2 id=headline-3>分片</h2><div id=outline-text-headline-3 class=outline-text-2><p>一种将 Postgres 数据库表分割成更小表的技术，通常用于在组成数据库实例集群的多个节点上横向分发数据，更多部署在多节点集群。</p><div id=outline-container-headline-4 class=outline-3><h3 id=headline-4>使用 Citus 分片操作</h3><div id=outline-text-headline-4 class=outline-text-3><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>create</span> extension citus;</span></span></code></pre></div></div><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>SELECT</span> create_distributed_table(<span style=color:#e6db74>&#39;table&#39;</span>, <span style=color:#e6db74>&#39;shard_column&#39;</span>, shard_count :<span style=color:#f92672>=</span> <span style=color:#ae81ff>256</span>);</span></span></code></pre></div></div><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>SELECT</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>FROM</span> citus_add_node(<span style=color:#e6db74>&#39;worker_node_address&#39;</span>, <span style=color:#e6db74>&#39;192.168.0.2&#39;</span>);</span></span></code></pre></div></div><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span>rebalance:
+</span></span><span style=display:flex><span><span style=color:#66d9ef>SELECT</span> rebalance_table_shards();</span></span></code></pre></div></div><p>除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。</p></div></div></div></div></section><div class=post-tags></div></div></div><div id=disqus_thread></div><script type=text/javascript>(function(){if(window.location.hostname=="localhost")return;var t,e=document.createElement("script");e.type="text/javascript",e.async=!0,t="yourDisqusShortname",e.src="//"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by
+Disqus.</a></noscript><a href=http://disqus.com/ class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></article></main><footer><div style=display:flex><a class=soc href=https://github.com/tywhisky rel=me title=GitHub><svg class="feather"><use href="//tywhisky.github.io/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github"/></svg></a><a class=border></a></div><div class=footer-info>2026 Tainef | <a href=https://github.com/athul/archie>Archie Theme</a> | Built with <a href=https://gohugo.io>Hugo</a></div></footer></div></body></html>

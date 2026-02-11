@@ -1,48 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Elixir on Happy Coding</title>
-    <link>//localhost:1313/categories/elixir/</link>
-    <description>Recent content in Elixir on Happy Coding</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>Tainef</copyright>
-    <lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/categories/elixir/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>记一次在 Elixir 上的开源工作</title>
-      <link>//localhost:1313/posts/my-first-work-on-open-source-for-elixir/</link>
-      <pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/my-first-work-on-open-source-for-elixir/</guid>
-      <description>&lt;p&gt;&#xA;前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[Note] Design Patterns in Elixir</title>
-      <link>//localhost:1313/posts/design-pattern-in-elixir/</link>
-      <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/design-pattern-in-elixir/</guid>
-      <description>&lt;p&gt;&#xA;This is a review note for José Valim&amp;#39;s speech on &lt;a href=&#34;https://www.youtube.com/watch?v=agkXUp0hCW8&#34;&gt;YouTube&lt;/a&gt;&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;What&amp;#39;s Design Pattern&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;A famous pic from &lt;a href=&#34;https://www.slideshare.net/slideshow/fp-patterns-ndc-london2013/42373281&#34;&gt;Functional Programming Patterns (NDC London 2013)&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;&lt;img src=&#34;../../pattern-design-between-oop-and-fp.png&#34; alt=&#34;/pattern-design-between-oop-and-fp.png&#34; title=&#34;/pattern-design-between-oop-and-fp.png&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;But this might cause some misunderstandings about design patterns. An OOP programmer might think: &amp;#39;Look, how clearly design patterns are defined!&amp;#39; Meanwhile, an FP programmer might think: &amp;#39;Oh, functional programming is much better than OOP programming. There are no design patterns, everything is just functions!&amp;#39;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Why Elixir is More Than Just Syntax Sugar Over Erlang</title>
-      <link>//localhost:1313/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</link>
-      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</guid>
-      <description>&lt;p&gt;&#xA;In my first year of using Elixir, I fell deeply in love with the language. However, I never really thought about why I liked Elixir so much. I mean, I can list many reasons, such as the Pipe Operator, Pattern Matching, and the powerful and flexible GenServer.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;So, if you asked me, I would definitely say it’s the syntax. Coincidentally, I soon encountered a colleague. I was eager to recommend Elixir to him, but he said, &amp;#34;Elixir is just syntax sugar over Erlang, right? So why not just use Erlang?&amp;#34;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>`Task.await/2` and `Task.await_many/2`</title>
-      <link>//localhost:1313/posts/note-about-task/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/note-about-task/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;Introduction&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;These days, I received a requirement to call several APIs simultaneously. It&amp;#39;s common sense to use Task for this purpose, and I naturally gravitated towards using it. However, I came across Task.yield/2 and wondered about the difference between it and Task.await. Let&amp;#39;s explore this.&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-2&#34;&gt;&#xA;Look some code snippets&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; ms &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6000&lt;/span&gt;] &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;async(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;map(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;await(&amp;amp;1, &lt;span style=&#34;color:#ae81ff&#34;&gt;3000&lt;/span&gt;))&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# return [2000, 4000, 6000]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; ms &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6_000&lt;/span&gt;] &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;async(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;yield_many(&lt;span style=&#34;color:#ae81ff&#34;&gt;3000&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# return ** (EXIT) time out&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-3&#34;&gt;&#xA;Summary&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;p&gt;&#xA;If you use await in Enum.map/2, each await picks up after the previous one finishes with a fresh 3-second timeout. Since each task blocks for 2 seconds before finishing, no timeout is triggered, but the total runtime exceeds the expected duration.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Trap Of `Map.update/4`</title>
-      <link>//localhost:1313/posts/trap-of-map-update/</link>
-      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/trap-of-map-update/</guid>
-      <description>&lt;p&gt;&#xA;If we want to update a value in a map of which key we can not ensure it&amp;#39;s exist.&#xA;We can get the two way quickly:&lt;/p&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; record &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(map, key, [])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;put(map, key, [new &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; record])&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;Or we can use `Map.update/4`:&lt;/p&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;update(map, key, [], &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; record &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; [new &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; record] &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;They are look like as the same completely. But the result is different,&#xA;the result by `Map.update/4` of above code is just get the last put in value.&#xA;It will only be empty or one item in the list.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Elixir on Happy Coding</title><link>//tywhisky.github.io/categories/elixir/</link><description>Recent content in Elixir on Happy Coding</description><generator>Hugo</generator><language>en-us</language><copyright>Tainef</copyright><lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="//tywhisky.github.io/categories/elixir/index.xml" rel="self" type="application/rss+xml"/><item><title>记一次在 Elixir 上的开源工作</title><link>//tywhisky.github.io/posts/my-first-work-on-open-source-for-elixir/</link><pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/my-first-work-on-open-source-for-elixir/</guid><description>&lt;p&gt;
+前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。&lt;/p&gt;
+&lt;p&gt;
+令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。&lt;/p&gt;
+&lt;p&gt;
+Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。&lt;/em&gt;&lt;/p&gt;</description></item><item><title>[Note] Design Patterns in Elixir</title><link>//tywhisky.github.io/posts/design-pattern-in-elixir/</link><pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/design-pattern-in-elixir/</guid><description>&lt;p&gt;
+This is a review note for José Valim&amp;#39;s speech on &lt;a href="https://www.youtube.com/watch?v=agkXUp0hCW8"&gt;YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+What&amp;#39;s Design Pattern
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+A famous pic from &lt;a href="https://www.slideshare.net/slideshow/fp-patterns-ndc-london2013/42373281"&gt;Functional Programming Patterns (NDC London 2013)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;img src="//tywhisky.github.io/pattern-design-between-oop-and-fp.png" alt="/pattern-design-between-oop-and-fp.png" title="/pattern-design-between-oop-and-fp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;
+But this might cause some misunderstandings about design patterns. An OOP programmer might think: &amp;#39;Look, how clearly design patterns are defined!&amp;#39; Meanwhile, an FP programmer might think: &amp;#39;Oh, functional programming is much better than OOP programming. There are no design patterns, everything is just functions!&amp;#39;&lt;/p&gt;</description></item><item><title>Why Elixir is More Than Just Syntax Sugar Over Erlang</title><link>//tywhisky.github.io/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</link><pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</guid><description>&lt;p&gt;
+In my first year of using Elixir, I fell deeply in love with the language. However, I never really thought about why I liked Elixir so much. I mean, I can list many reasons, such as the Pipe Operator, Pattern Matching, and the powerful and flexible GenServer.&lt;/p&gt;
+&lt;p&gt;
+So, if you asked me, I would definitely say it’s the syntax. Coincidentally, I soon encountered a colleague. I was eager to recommend Elixir to him, but he said, &amp;#34;Elixir is just syntax sugar over Erlang, right? So why not just use Erlang?&amp;#34;&lt;/p&gt;</description></item><item><title>`Task.await/2` and `Task.await_many/2`</title><link>//tywhisky.github.io/posts/note-about-task/</link><pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/note-about-task/</guid><description>&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+Introduction
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+These days, I received a requirement to call several APIs simultaneously. It&amp;#39;s common sense to use Task for this purpose, and I naturally gravitated towards using it. However, I came across Task.yield/2 and wondered about the difference between it and Task.await. Let&amp;#39;s explore this.&lt;/p&gt;
+&lt;div id="outline-container-headline-2" class="outline-3"&gt;
+&lt;h3 id="headline-2"&gt;
+Look some code snippets
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-2" class="outline-text-3"&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; ms &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;2_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;6000&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;async(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;|&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Enum&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;map(&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;await(&amp;amp;1, &lt;span style="color:#ae81ff"&gt;3000&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# return [2000, 4000, 6000]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; ms &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;2_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;6_000&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;async(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;|&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;yield_many(&lt;span style="color:#ae81ff"&gt;3000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# return ** (EXIT) time out&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-headline-3" class="outline-3"&gt;
+&lt;h3 id="headline-3"&gt;
+Summary
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-3" class="outline-text-3"&gt;
+&lt;p&gt;
+If you use await in Enum.map/2, each await picks up after the previous one finishes with a fresh 3-second timeout. Since each task blocks for 2 seconds before finishing, no timeout is triggered, but the total runtime exceeds the expected duration.&lt;/p&gt;</description></item><item><title>Trap Of `Map.update/4`</title><link>//tywhisky.github.io/posts/trap-of-map-update/</link><pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/trap-of-map-update/</guid><description>&lt;p&gt;
+If we want to update a value in a map of which key we can not ensure it&amp;#39;s exist.
+We can get the two way quickly:&lt;/p&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; record &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Map&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(map, key, [])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Map&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;put(map, key, [new &lt;span style="color:#f92672"&gt;|&lt;/span&gt; record])&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Or we can use `Map.update/4`:&lt;/p&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Map&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;update(map, key, [], &lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; record &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; [new &lt;span style="color:#f92672"&gt;|&lt;/span&gt; record] &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+They are look like as the same completely. But the result is different,
+the result by `Map.update/4` of above code is just get the last put in value.
+It will only be empty or one item in the list.&lt;/p&gt;</description></item></channel></rss>

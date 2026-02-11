@@ -1,20 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Docker on Happy Coding</title>
-    <link>//localhost:1313/tags/docker/</link>
-    <description>Recent content in Docker on Happy Coding</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>Tainef</copyright>
-    <lastBuildDate>Sat, 13 Aug 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[Docker] Differences between -v and --mount</title>
-      <link>//localhost:1313/posts/the-difference-of-mount-and-v-for-docker/</link>
-      <pubDate>Sat, 13 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/the-difference-of-mount-and-v-for-docker/</guid>
-      <description>&lt;p&gt;&#xA;Last week, I wanted to upgrade the version of my livebook in Docker. And I had a very strange problem.&#xA;I did the following:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code class=&#34;verbatim&#34;&gt;ssh&lt;/code&gt; my server&lt;/li&gt;&#xA;&lt;li&gt;docker container stop &amp;amp; rm&lt;/li&gt;&#xA;&lt;li&gt;docker images pull livebook/livebook:latest&lt;/li&gt;&#xA;&lt;li&gt;docker run&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;No errors occurred during this period and everything looks good.&#xA;But when I open the page of livebook, the update prompt is still visiting the screen.&#xA;Then I go to the settings page. The version is still 0.6.1(the latest version is 0.6.3). &lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Happy Coding</title><link>//tywhisky.github.io/tags/docker/</link><description>Recent content in Docker on Happy Coding</description><generator>Hugo</generator><language>en-us</language><copyright>Tainef</copyright><lastBuildDate>Sat, 13 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="//tywhisky.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>[Docker] Differences between -v and --mount</title><link>//tywhisky.github.io/posts/the-difference-of-mount-and-v-for-docker/</link><pubDate>Sat, 13 Aug 2022 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/the-difference-of-mount-and-v-for-docker/</guid><description>&lt;p&gt;
+Last week, I wanted to upgrade the version of my livebook in Docker. And I had a very strange problem.
+I did the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class="verbatim"&gt;ssh&lt;/code&gt; my server&lt;/li&gt;
+&lt;li&gt;docker container stop &amp;amp; rm&lt;/li&gt;
+&lt;li&gt;docker images pull livebook/livebook:latest&lt;/li&gt;
+&lt;li&gt;docker run&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No errors occurred during this period and everything looks good.
+But when I open the page of livebook, the update prompt is still visiting the screen.
+Then I go to the settings page. The version is still 0.6.1(the latest version is 0.6.3). &lt;/p&gt;</description></item></channel></rss>

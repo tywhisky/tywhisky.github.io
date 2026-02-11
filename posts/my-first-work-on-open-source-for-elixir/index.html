@@ -1,46 +1,17 @@
-<!DOCTYPE html>
-<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>记一次在 Elixir 上的开源工作 - Happy Coding</title><link rel="icon" type="image/png" href=favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="
+<!doctype html><html><head lang=en><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>记一次在 Elixir 上的开源工作 - Happy Coding</title><link rel=icon type=image/png href=favicon.ico><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
 前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。
 
 令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。
 
 Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：
 
-当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。" />
-	<meta property="og:image" content="//localhost:1313/"/>
-	<meta property="og:url" content="//localhost:1313/posts/my-first-work-on-open-source-for-elixir/">
-  <meta property="og:site_name" content="Happy Coding">
-  <meta property="og:title" content="记一次在 Elixir 上的开源工作">
-  <meta property="og:description" content="前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。
+当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。"><meta property="og:image" content="//tywhisky.github.io/"><meta property="og:url" content="//tywhisky.github.io/posts/my-first-work-on-open-source-for-elixir/"><meta property="og:site_name" content="Happy Coding"><meta property="og:title" content="记一次在 Elixir 上的开源工作"><meta property="og:description" content="前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。
 令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。
 Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：
-当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-08-04T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-08-04T00:00:00+00:00">
-    <meta property="article:tag" content="Elixir, Open Source">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="记一次在 Elixir 上的开源工作">
-  <meta name="twitter:description" content="前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。
+当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-08-04T00:00:00+00:00"><meta property="article:modified_time" content="2024-08-04T00:00:00+00:00"><meta property="article:tag" content="Elixir, Open Source"><meta name=twitter:card content="summary"><meta name=twitter:title content="记一次在 Elixir 上的开源工作"><meta name=twitter:description content="前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。
 令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。
 Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：
-当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。">
-
-        <link href="//localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
-	
-
-	
-	<link rel="stylesheet" type="text/css" media="screen" href="//localhost:1313/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css" />
-		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//localhost:1313/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
-		src="//localhost:1313/js/MathJax.js"></script>
-		
-		<script type="text/x-mathjax-config">
+当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。"><link href=//tywhisky.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css rel=stylesheet><link rel=stylesheet type=text/css media=screen href=//tywhisky.github.io/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css><link id=darkModeStyle rel=stylesheet type=text/css href=//tywhisky.github.io/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css media="(prefers-color-scheme: dark)"><script type=text/javascript src=//tywhisky.github.io/js/MathJax.js></script><script type=text/x-mathjax-config>
 		MathJax.Hub.Config({
 			tex2jax: {
 				inlineMath: [['$','$'], ['\\(','\\)']],
@@ -52,118 +23,8 @@ Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签�
 						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
 			}
 		});
-		</script><link rel="stylesheet" href="//localhost:1313/katex/katex.min.css ">
-		<script defer src="//localhost:1313/katex/katex.min.js"></script>
-		<script defer src="//localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-		
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-					renderMathInElement(document.body, {
-							delimiters: [
-									{left: "$$", right: "$$", display: true},
-									{left: "$", right: "$", display: false}
-							]
-					});
-			});
-		</script>
-</head>
-<body>
-        <div class="content"><header>
-	<div class="main">
-		<a href="//localhost:1313/">Happy Coding</a>
-	</div>
-	<nav>
-		
-		<a href="../../">Home</a>
-		
-		<a href="../../posts">All posts</a>
-		
-		<a href="../../about">About</a>
-		
-		<a href="../../tags">Tags</a>
-		
-		
-	</nav>
-</header>
-
-<main>
-  <article>
-    <div class="post-container">
-      
-      <div class="post-content">
-        <div class="title">
-          <h1 class="title">记一次在 Elixir 上的开源工作</h1>
-          <div class="meta">Posted on Aug 4, 2024</div>
-        </div>
-        
-        <section class="body">
-          
-<p>
-前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。</p>
-<p>
-令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。</p>
-<p>
-Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：</p>
-<blockquote>
-<p><em>当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。</em></p>
-</blockquote>
-<p>
-我想这是个很简单的改动，我应该不在话下。于是我果断 Fork&amp;Clone Elixir 项目，新建分支。得益于 Elixir 清晰易懂的 Contribution 文档，编译，测试，整个开发过程非常丝滑（虽然丝滑，但是实际上还是超出了我的预期用时，一门编程语言的代码量还是花了我不少阅读时间，并且再一次让我体会到: <strong>阅读源码真的是学习的最佳手段</strong> ）。完成后我果断上传了分支，提交了 PR 请求。当时时间是北京时间晚上 11 点左右，令人惊讶的是提交十分钟后 José 就提供了回复， <strong>他很有礼貌的表示感谢 PR ，同时表示我不需要通过颜色来区分显示 `normal` 类型的 EXIT 信号，直接全部显示就行了</strong> 。我在接到他回复之后马上提交了修改，再 10 分钟后他就启动了线上测试，通过之后立即合并了代码，就这样短短 1 个小时内，我完成了一次对 Elixir 的开源贡献！</p>
-<p>
-这一切完成后，我当晚体会到了难以言喻的纯粹的快乐，这种感觉比我第一次学习代码跑起 &#39;Hello, World&#39; 更甚。我一时间十分有分享的想法，但是我不太好意思向身边的人诉说，一方面这个 Bug 改动并不困难，另一方面熟人中程序员也不多，最终我只是兴奋地和女友和最要好的朋友说了这件事。不过他们并不是开发者，所以理解不了我的感受，但还是耐心地听我的分享，十分感谢他们。</p>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-后日谈
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<p>
-昨天是周末，我很有动力地继续前往 Elixir Issue 列表找“活”，发现了一个 2022 年就开的 Feature 并开始工作，花了一个下午的时间提交了 PR。遗憾的是我在应用场景上误会了需求，虽然 José Valim 很客气地对 Issue 不够详细说明表示抱歉，但我知道主要还是我太想当然了。第一次的 Merge 过于顺利让我有点冲动了，下一次我要更加详尽地去准备（惭愧）。</p>
-</div>
-</div>
-
-        </section>
-        <div class="post-tags">
-          
-          
-          
-        </div>
-      </div>
-
-      
-      
-    </div>
-
-    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    (function () {
-        
-        
-        if (window.location.hostname == "localhost")
-            return;
-
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        var disqus_shortname = 'yourDisqusShortname';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-        Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</article>
-</main>
-<footer>
-  <div style="display:flex"><a class="soc" href="https://github.com/tywhisky" rel="me" title="GitHub"><svg class="feather">
-       <use href="../../svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
-    </svg></a><a class="border"></a></div>
-  <div class="footer-info">
-    2026  Tainef |  <a
-      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
-  </div>
-</footer>
-
-</div>
-    </body>
-</html>
+		</script><link rel=stylesheet href=//tywhisky.github.io/katex/katex.min.css><script defer src=//tywhisky.github.io/katex/katex.min.js></script><script defer src=//tywhisky.github.io/katex/auto-render.min.js onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></head><body><div class=content><header><div class=main><a href=//tywhisky.github.io/>Happy Coding</a></div><nav><a href=//tywhisky.github.io/>Home</a>
+<a href=//tywhisky.github.io/posts>All posts</a>
+<a href=//tywhisky.github.io/about>About</a>
+<a href=//tywhisky.github.io/tags>Tags</a></nav></header><main><article><div class=post-container><div class=post-content><div class=title><h1 class=title>记一次在 Elixir 上的开源工作</h1><div class=meta>Posted on Aug 4, 2024</div></div><section class=body><p>前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。</p><p>令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。</p><p>Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：</p><blockquote><p><em>当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。</em></p></blockquote><p>我想这是个很简单的改动，我应该不在话下。于是我果断 Fork&amp;Clone Elixir 项目，新建分支。得益于 Elixir 清晰易懂的 Contribution 文档，编译，测试，整个开发过程非常丝滑（虽然丝滑，但是实际上还是超出了我的预期用时，一门编程语言的代码量还是花了我不少阅读时间，并且再一次让我体会到: <strong>阅读源码真的是学习的最佳手段</strong> ）。完成后我果断上传了分支，提交了 PR 请求。当时时间是北京时间晚上 11 点左右，令人惊讶的是提交十分钟后 José 就提供了回复， <strong>他很有礼貌的表示感谢 PR ，同时表示我不需要通过颜色来区分显示 `normal` 类型的 EXIT 信号，直接全部显示就行了</strong> 。我在接到他回复之后马上提交了修改，再 10 分钟后他就启动了线上测试，通过之后立即合并了代码，就这样短短 1 个小时内，我完成了一次对 Elixir 的开源贡献！</p><p>这一切完成后，我当晚体会到了难以言喻的纯粹的快乐，这种感觉比我第一次学习代码跑起 'Hello, World' 更甚。我一时间十分有分享的想法，但是我不太好意思向身边的人诉说，一方面这个 Bug 改动并不困难，另一方面熟人中程序员也不多，最终我只是兴奋地和女友和最要好的朋友说了这件事。不过他们并不是开发者，所以理解不了我的感受，但还是耐心地听我的分享，十分感谢他们。</p><div id=outline-container-headline-1 class=outline-3><h3 id=headline-1>后日谈</h3><div id=outline-text-headline-1 class=outline-text-3><p>昨天是周末，我很有动力地继续前往 Elixir Issue 列表找“活”，发现了一个 2022 年就开的 Feature 并开始工作，花了一个下午的时间提交了 PR。遗憾的是我在应用场景上误会了需求，虽然 José Valim 很客气地对 Issue 不够详细说明表示抱歉，但我知道主要还是我太想当然了。第一次的 Merge 过于顺利让我有点冲动了，下一次我要更加详尽地去准备（惭愧）。</p></div></div></section><div class=post-tags></div></div></div><div id=disqus_thread></div><script type=text/javascript>(function(){if(window.location.hostname=="localhost")return;var t,e=document.createElement("script");e.type="text/javascript",e.async=!0,t="yourDisqusShortname",e.src="//"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by
+Disqus.</a></noscript><a href=http://disqus.com/ class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></article></main><footer><div style=display:flex><a class=soc href=https://github.com/tywhisky rel=me title=GitHub><svg class="feather"><use href="//tywhisky.github.io/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github"/></svg></a><a class=border></a></div><div class=footer-info>2026 Tainef | <a href=https://github.com/athul/archie>Archie Theme</a> | Built with <a href=https://gohugo.io>Hugo</a></div></footer></div></body></html>

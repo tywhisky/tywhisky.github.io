@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>PostgreSQL 索引总结 - Happy Coding</title><link rel="icon" type="image/png" href=favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="
+<!doctype html><html><head lang=en><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>PostgreSQL 索引总结 - Happy Coding</title><link rel=icon type=image/png href=favicon.ico><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
 Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对
 所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。
 
@@ -37,12 +33,7 @@ B-tree 索引能够有效的用于相等下的范围查询。它们可以对所�
 
 实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。
 
-For example:" />
-	<meta property="og:image" content="//localhost:1313/"/>
-	<meta property="og:url" content="//localhost:1313/posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/">
-  <meta property="og:site_name" content="Happy Coding">
-  <meta property="og:title" content="PostgreSQL 索引总结">
-  <meta property="og:description" content="Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对 所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。
+For example:"><meta property="og:image" content="//tywhisky.github.io/"><meta property="og:url" content="//tywhisky.github.io/posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/"><meta property="og:site_name" content="Happy Coding"><meta property="og:title" content="PostgreSQL 索引总结"><meta property="og:description" content="Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对 所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。
 索引是一种从数据表中高效检索数据的方式，他只在相关联的数据量相对小时比较有用（也就是说，检索行的条件 - the WHERE clause - 是选择性的）。B-tree 索引也通常用于避免排序。
 索引类型 Postgres 支持多种不同类型的索引：
 – B-Tree：这是当你使用 `CREATE INDEX` 时默认的得到的索引类型。几乎所有的数据库都有 B-tree 类型的索引。 B-trees 会试图保持平衡，树的每个分支中的数据量大致相同。因此，为找到行而必须遍历的级别数始终在同一范围内。 B-tree 索引能够有效的用于相等下的范围查询。它们可以对所有数据类型进行操作，也可用于检索 NULL 值。B 树设计为可以很好地处理缓存，即使只缓存了一部分。
@@ -51,17 +42,7 @@ For example:" />
 – Generalized Search Tree (GiST) GiST 索引允许创建传统的平衡树结构，用于等价的和范围查询。很适合地理数据类型的大文本搜索。
 我们这里主要讨论默认的 B-Tree 索引。
 为什么我的查询没有使用索引？ 实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。
-For example:">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2023-12-24T00:00:00+00:00">
-    <meta property="article:modified_time" content="2023-12-24T00:00:00+00:00">
-    <meta property="article:tag" content="Postgresql">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="PostgreSQL 索引总结">
-  <meta name="twitter:description" content="Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对 所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。
+For example:"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-12-24T00:00:00+00:00"><meta property="article:modified_time" content="2023-12-24T00:00:00+00:00"><meta property="article:tag" content="Postgresql"><meta name=twitter:card content="summary"><meta name=twitter:title content="PostgreSQL 索引总结"><meta name=twitter:description content="Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对 所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。
 索引是一种从数据表中高效检索数据的方式，他只在相关联的数据量相对小时比较有用（也就是说，检索行的条件 - the WHERE clause - 是选择性的）。B-tree 索引也通常用于避免排序。
 索引类型 Postgres 支持多种不同类型的索引：
 – B-Tree：这是当你使用 `CREATE INDEX` 时默认的得到的索引类型。几乎所有的数据库都有 B-tree 类型的索引。 B-trees 会试图保持平衡，树的每个分支中的数据量大致相同。因此，为找到行而必须遍历的级别数始终在同一范围内。 B-tree 索引能够有效的用于相等下的范围查询。它们可以对所有数据类型进行操作，也可用于检索 NULL 值。B 树设计为可以很好地处理缓存，即使只缓存了一部分。
@@ -70,17 +51,7 @@ For example:">
 – Generalized Search Tree (GiST) GiST 索引允许创建传统的平衡树结构，用于等价的和范围查询。很适合地理数据类型的大文本搜索。
 我们这里主要讨论默认的 B-Tree 索引。
 为什么我的查询没有使用索引？ 实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。
-For example:">
-
-        <link href="//localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
-	
-
-	
-	<link rel="stylesheet" type="text/css" media="screen" href="//localhost:1313/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css" />
-		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//localhost:1313/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
-		src="//localhost:1313/js/MathJax.js"></script>
-		
-		<script type="text/x-mathjax-config">
+For example:"><link href=//tywhisky.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css rel=stylesheet><link rel=stylesheet type=text/css media=screen href=//tywhisky.github.io/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css><link id=darkModeStyle rel=stylesheet type=text/css href=//tywhisky.github.io/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css media="(prefers-color-scheme: dark)"><script type=text/javascript src=//tywhisky.github.io/js/MathJax.js></script><script type=text/x-mathjax-config>
 		MathJax.Hub.Config({
 			tex2jax: {
 				inlineMath: [['$','$'], ['\\(','\\)']],
@@ -92,242 +63,17 @@ For example:">
 						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
 			}
 		});
-		</script><link rel="stylesheet" href="//localhost:1313/katex/katex.min.css ">
-		<script defer src="//localhost:1313/katex/katex.min.js"></script>
-		<script defer src="//localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-		
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-					renderMathInElement(document.body, {
-							delimiters: [
-									{left: "$$", right: "$$", display: true},
-									{left: "$", right: "$", display: false}
-							]
-					});
-			});
-		</script>
-</head>
-<body>
-        <div class="content"><header>
-	<div class="main">
-		<a href="//localhost:1313/">Happy Coding</a>
-	</div>
-	<nav>
-		
-		<a href="../../">Home</a>
-		
-		<a href="../../posts">All posts</a>
-		
-		<a href="../../about">About</a>
-		
-		<a href="../../tags">Tags</a>
-		
-		
-	</nav>
-</header>
-
-<main>
-  <article>
-    <div class="post-container">
-      
-      <div class="post-content">
-        <div class="title">
-          <h1 class="title">PostgreSQL 索引总结</h1>
-          <div class="meta">Posted on Dec 24, 2023</div>
-        </div>
-        
-        <section class="body">
-          
-<p>
-Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对
-所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。</p>
-<p>
-索引是一种从数据表中高效检索数据的方式，他只在相关联的数据量相对小时比较有用（也就是说，检索行的条件 - the WHERE clause - 是选择性的）。B-tree 索引也通常用于避免排序。</p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-索引类型
-</h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-Postgres 支持多种不同类型的索引：</p>
-<p>
-– B-Tree：这是当你使用 `CREATE INDEX` 时默认的得到的索引类型。几乎所有的数据库都有 B-tree 类型的索引。
+		</script><link rel=stylesheet href=//tywhisky.github.io/katex/katex.min.css><script defer src=//tywhisky.github.io/katex/katex.min.js></script><script defer src=//tywhisky.github.io/katex/auto-render.min.js onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></head><body><div class=content><header><div class=main><a href=//tywhisky.github.io/>Happy Coding</a></div><nav><a href=//tywhisky.github.io/>Home</a>
+<a href=//tywhisky.github.io/posts>All posts</a>
+<a href=//tywhisky.github.io/about>About</a>
+<a href=//tywhisky.github.io/tags>Tags</a></nav></header><main><article><div class=post-container><div class=post-content><div class=title><h1 class=title>PostgreSQL 索引总结</h1><div class=meta>Posted on Dec 24, 2023</div></div><section class=body><p>Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对
+所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。</p><p>索引是一种从数据表中高效检索数据的方式，他只在相关联的数据量相对小时比较有用（也就是说，检索行的条件 - the WHERE clause - 是选择性的）。B-tree 索引也通常用于避免排序。</p><div id=outline-container-headline-1 class=outline-2><h2 id=headline-1>索引类型</h2><div id=outline-text-headline-1 class=outline-text-2><p>Postgres 支持多种不同类型的索引：</p><p>– B-Tree：这是当你使用 `CREATE INDEX` 时默认的得到的索引类型。几乎所有的数据库都有 B-tree 类型的索引。
 B-trees 会试图保持平衡，树的每个分支中的数据量大致相同。因此，为找到行而必须遍历的级别数始终在同一范围内。
-B-tree 索引能够有效的用于相等下的范围查询。它们可以对所有数据类型进行操作，也可用于检索 NULL 值。B 树设计为可以很好地处理缓存，即使只缓存了一部分。</p>
-<p>
-– Hash Indexes：Postgres 10 之前的 Hash 索引只对等式比较有用，但是它们不是事务安全的，在崩溃之后必须手动重建。</p>
-<p>
-– Generalized Inverted Indexes (GIN)：GIN 索引对于必须映射许多值到一条数据上时非常有用。
-就像 B-tree 索引被优化用于一条数据只有单个 key value，GINs 索引在 array 类型的数据上的良好变现也会很适合大文本搜索。</p>
-<p>
-– Generalized Search Tree (GiST) GiST 索引允许创建传统的平衡树结构，用于等价的和范围查询。很适合地理数据类型的大文本搜索。</p>
-<p>
-我们这里主要讨论默认的 B-Tree 索引。</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-2">
-<h2 id="headline-2">
-为什么我的查询没有使用索引？
-</h2>
-<div id="outline-text-headline-2" class="outline-text-2">
-<p>
-实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。</p>
-<p>
-For example:</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> foo <span style="color:#66d9ef">where</span> bar <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span></span></span></code></pre></div>
-</div>
-<p>看起来没有问题，但是如果恰好有更多行 bar 的值为 2 ，那么我们如果继续使用索引来查询</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> foo <span style="color:#66d9ef">where</span> bar <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span></span></span></code></pre></div>
-</div>
-<p>这种情况下，索引可能还不如普通的顺序查找来的快，Postgres planner 可以判断出这样的情况，选择更快速的查询方式。</p>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-2">
-<h2 id="headline-3">
-Partial Indexes
-</h2>
-<div id="outline-text-headline-3" class="outline-text-2">
-<p>
-局部索引覆盖了整张表的一部分数据，如果想要提升效率通常的做法是减小他的 size 。一个更小的索引会占据更少的存储空间，
-更容易去维护，也能够更快速的进行扫描，局部索引就是这样的东西。</p>
-<p>
-举个例子，假设我们的网站的文章（articles），我希望对 create_at 创建索引：</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> articles_flagged_created_at_index <span style="color:#66d9ef">ON</span> articles(created_at);</span></span></code></pre></div>
-</div>
-<p>
-但是我们可以通过 WHERE 来缩小这个索引的范围：</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> articles_flagged_created_at_index <span style="color:#66d9ef">ON</span> articles(created_at) <span style="color:#66d9ef">WHERE</span> flagged <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">TRUE</span>;</span></span></code></pre></div>
-</div>
-<p>这种情况下的索引更小，自然会执行的更加效率。</p>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-2">
-<h2 id="headline-4">
-Expression Indexes
-</h2>
-<div id="outline-text-headline-4" class="outline-text-2">
-<p>
-表达式索引就像它的字面意思，不在通过单一的列创建索引，而是一个函数或者标量表达式，这种特性
+B-tree 索引能够有效的用于相等下的范围查询。它们可以对所有数据类型进行操作，也可用于检索 NULL 值。B 树设计为可以很好地处理缓存，即使只缓存了一部分。</p><p>– Hash Indexes：Postgres 10 之前的 Hash 索引只对等式比较有用，但是它们不是事务安全的，在崩溃之后必须手动重建。</p><p>– Generalized Inverted Indexes (GIN)：GIN 索引对于必须映射许多值到一条数据上时非常有用。
+就像 B-tree 索引被优化用于一条数据只有单个 key value，GINs 索引在 array 类型的数据上的良好变现也会很适合大文本搜索。</p><p>– Generalized Search Tree (GiST) GiST 索引允许创建传统的平衡树结构，用于等价的和范围查询。很适合地理数据类型的大文本搜索。</p><p>我们这里主要讨论默认的 B-Tree 索引。</p></div></div><div id=outline-container-headline-2 class=outline-2><h2 id=headline-2>为什么我的查询没有使用索引？</h2><div id=outline-text-headline-2 class=outline-text-2><p>实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。</p><p>For example:</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>select</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>from</span> foo <span style=color:#66d9ef>where</span> bar <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span></span></span></code></pre></div></div><p>看起来没有问题，但是如果恰好有更多行 bar 的值为 2 ，那么我们如果继续使用索引来查询</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>select</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>from</span> foo <span style=color:#66d9ef>where</span> bar <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span></span></span></code></pre></div></div><p>这种情况下，索引可能还不如普通的顺序查找来的快，Postgres planner 可以判断出这样的情况，选择更快速的查询方式。</p></div></div><div id=outline-container-headline-3 class=outline-2><h2 id=headline-3>Partial Indexes</h2><div id=outline-text-headline-3 class=outline-text-2><p>局部索引覆盖了整张表的一部分数据，如果想要提升效率通常的做法是减小他的 size 。一个更小的索引会占据更少的存储空间，
+更容易去维护，也能够更快速的进行扫描，局部索引就是这样的东西。</p><p>举个例子，假设我们的网站的文章（articles），我希望对 create_at 创建索引：</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> articles_flagged_created_at_index <span style=color:#66d9ef>ON</span> articles(created_at);</span></span></code></pre></div></div><p>但是我们可以通过 WHERE 来缩小这个索引的范围：</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> articles_flagged_created_at_index <span style=color:#66d9ef>ON</span> articles(created_at) <span style=color:#66d9ef>WHERE</span> flagged <span style=color:#66d9ef>IS</span> <span style=color:#66d9ef>TRUE</span>;</span></span></code></pre></div></div><p>这种情况下的索引更小，自然会执行的更加效率。</p></div></div><div id=outline-container-headline-4 class=outline-2><h2 id=headline-4>Expression Indexes</h2><div id=outline-text-headline-4 class=outline-text-2><p>表达式索引就像它的字面意思，不在通过单一的列创建索引，而是一个函数或者标量表达式，这种特性
 对于根据计算结果来获取表中的数据是非常有用的。比如现在你有一份用户的地址邮件列表，我们当然需要按照用户的邮箱地址中的大小写来存储，
-但是我们又希望索引不要根据大小写来创建，就可以这样操作：</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> users_lower_email <span style="color:#66d9ef">ON</span> users(<span style="color:#66d9ef">lower</span>(email));</span></span></code></pre></div>
-</div>
-<p>
-另一种更加常见的情况是根据已知的数据查询，比如我们在 datetime 字段中存储了时间信息，但是我们希望直接
-根据已有的时间数据检索，可以这样：</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> articles_day <span style="color:#66d9ef">ON</span> articles (date(published_at))</span></span></code></pre></div>
-</div>
-<p>
-但是表达式索引的维护代价比较昂贵，因为每当有新的数据插入或者更新时，都需要重新计算表达式的值，然后存储在索引中。 所以是否需要表达式索引还是要更具业务需求进行判断。</p>
-</div>
-</div>
-<div id="outline-container-headline-5" class="outline-2">
-<h2 id="headline-5">
-Unique Indexes
-</h2>
-<div id="outline-text-headline-5" class="outline-text-2">
-<p>
-唯一索引可以保证数据表内不会有重复的行数据，而且在数据完整性和查询速度上有很大的优势。</p>
-<p>
-就拿数据完整性来说，比如我们在 ActiveModel 中使用 `validates_uniqueness_of` 验证并不能完全保证不会出现重复的数据，因为用户可能同时创建很多记录。因此在数据库层面创建唯一索引是很必要的。</p>
-<p>
-唯一索引和唯一约束之间几乎没有区别。唯一索引可以被认为是更低层次的，因为表达式索引和部分索引不能作为唯一约束来创建。即使是基于表达式的部分唯一索引也是可能的。</p>
-</div>
-</div>
-<div id="outline-container-headline-6" class="outline-2">
-<h2 id="headline-6">
-Multi-Column Indexes
-</h2>
-<div id="outline-text-headline-6" class="outline-text-2">
-<p>
-虽然 Postgres 可以创建多列索引，但了解何时这样做是有意义的非常重要。Postgres 查询规划器可以通过执行位图索引扫描，将多个单列索引组合并用于多列查询。通常，你可以为每个覆盖查询条件的列创建一个索引，并且在大多数情况下，Postgres 会使用它。因此，在创建多列索引之前，一定要进行基准测试并证明其合理性。与往常一样，索引是有代价的，而且多列索引只能优化按相同顺序引用索引中列的查询，而多个单列索引可以为更多的查询提供性能提升。</p>
-<p>
-然而，有些情况下多列索引确实是有意义的。对列 (a, b) 创建的索引可以被包含 WHERE a = x AND b = y 或仅使用 WHERE a = x 的查询使用，但不会被仅使用 WHERE b = y 的查询使用。所以，如果这符合你的应用程序的查询模式，多列索引方法是值得考虑的。此外，请注意，在这种情况下，仅对 a 创建索引将是多余的。</p>
-</div>
-</div>
-<div id="outline-container-headline-7" class="outline-2">
-<h2 id="headline-7">
-B-trees 和 Sorting
-</h2>
-<div id="outline-text-headline-7" class="outline-text-2">
-<p>
-B-Tree 索引一般是存储为升序排列，在一些场景下，你可以设置不同的排序。比如你想要展示一个文章的分页列表，
-按照最近的发布时间来排序。articles 上 published_at 为 NULL 的表示尚未发布。</p>
-<p>
-我们可以这样创建索引：</p>
-<div class="src src-sql">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">INDEX</span> articles_published_at_index <span style="color:#66d9ef">ON</span> articles(published_at <span style="color:#66d9ef">DESC</span> NULLS <span style="color:#66d9ef">LAST</span>);</span></span></code></pre></div>
-</div>
-<p>由于我们按照 published_at 列的排序顺序查询表并限制结果，因此按相同顺序创建索引可以带来一些好处。Postgres 会从索引中以正确的顺序找到所需的行，然后访问数据块以检索数据。如果索引没有排序，Postgres 很可能会按顺序读取数据块并对结果进行排序。</p>
-<p>
-当你需要‘将空值排序在最后’的行为时，这种技术主要与单列索引相关，因为否则顺序已经是可用的，因为索引可以从任意方向扫描。当在多列索引中使用，并且查询请求混合排序顺序（例如 a ASC, b DESC）时，这种技术变得更加相关。</p>
-</div>
-</div>
-<div id="outline-container-headline-8" class="outline-2">
-<h2 id="headline-8">
-管理和维护索引
-</h2>
-<div id="outline-text-headline-8" class="outline-text-2">
-<p>
-Postgres 中的索引并不会保存所有的数据，即使在查询中使用索引找到了匹配的行，仍然需要访问磁盘来获得数据。此外，行可见信息也不保存在索引中。</p>
-<p>
-所以索引会带来存储和维护的成本，必须考虑是否值得去使用。例如，对于一张足够大的表的主键查找，所以可以发挥很好的作用：在索引中找到目标行，然后选择性的从磁盘中获取它们，而不是直接顺序查表。但是如果是非常小的表，比如一个城市查找表，按照城市名称搜索，可能索引就不够理想了。 因为在这种情况下，PostgreSQL 可能决定忽略索引而选择顺序扫描，这时候创建的索引只能是一个从未被使用的无效索引。</p>
-<p>
-同时如果项目已经在生产过程中，想要增加索引必须十分小心，因为创建索引会倒是锁表。对于很大的数据表可能会锁住长达几个小时，不过还好 Postgres 提供了 CREATE INDEX CONCURRENTLY，能够让你避免被锁表，但是代价是增加索引的过程会变得很长。当然，这里的锁表只是不可写，数据依然是可读的。</p>
-<p>
-如果一张表中的数据经常性的被更新和删除，那么长时间后索引可能会变得碎片化，这种时候需要执行重新索引（REINDEX），但是如果要重新索引较大的索引要谨慎，因为和之前一样，还是会有写锁。这个过程是在相同表的列上同时构建一个并发索引，但是使用不同的名称，然后删除原始索引并重命名新的索引，这个过程需要更长，但是不需要长时间的锁表。</p>
-</div>
-</div>
-
-        </section>
-        <div class="post-tags">
-          
-          
-          
-        </div>
-      </div>
-
-      
-      
-    </div>
-
-    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    (function () {
-        
-        
-        if (window.location.hostname == "localhost")
-            return;
-
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        var disqus_shortname = 'yourDisqusShortname';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-        Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</article>
-</main>
-<footer>
-  <div style="display:flex"><a class="soc" href="https://github.com/tywhisky" rel="me" title="GitHub"><svg class="feather">
-       <use href="../../svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
-    </svg></a><a class="border"></a></div>
-  <div class="footer-info">
-    2026  Tainef |  <a
-      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
-  </div>
-</footer>
-
-</div>
-    </body>
-</html>
+但是我们又希望索引不要根据大小写来创建，就可以这样操作：</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> users_lower_email <span style=color:#66d9ef>ON</span> users(<span style=color:#66d9ef>lower</span>(email));</span></span></code></pre></div></div><p>另一种更加常见的情况是根据已知的数据查询，比如我们在 datetime 字段中存储了时间信息，但是我们希望直接
+根据已有的时间数据检索，可以这样：</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> articles_day <span style=color:#66d9ef>ON</span> articles (date(published_at))</span></span></code></pre></div></div><p>但是表达式索引的维护代价比较昂贵，因为每当有新的数据插入或者更新时，都需要重新计算表达式的值，然后存储在索引中。 所以是否需要表达式索引还是要更具业务需求进行判断。</p></div></div><div id=outline-container-headline-5 class=outline-2><h2 id=headline-5>Unique Indexes</h2><div id=outline-text-headline-5 class=outline-text-2><p>唯一索引可以保证数据表内不会有重复的行数据，而且在数据完整性和查询速度上有很大的优势。</p><p>就拿数据完整性来说，比如我们在 ActiveModel 中使用 `validates_uniqueness_of` 验证并不能完全保证不会出现重复的数据，因为用户可能同时创建很多记录。因此在数据库层面创建唯一索引是很必要的。</p><p>唯一索引和唯一约束之间几乎没有区别。唯一索引可以被认为是更低层次的，因为表达式索引和部分索引不能作为唯一约束来创建。即使是基于表达式的部分唯一索引也是可能的。</p></div></div><div id=outline-container-headline-6 class=outline-2><h2 id=headline-6>Multi-Column Indexes</h2><div id=outline-text-headline-6 class=outline-text-2><p>虽然 Postgres 可以创建多列索引，但了解何时这样做是有意义的非常重要。Postgres 查询规划器可以通过执行位图索引扫描，将多个单列索引组合并用于多列查询。通常，你可以为每个覆盖查询条件的列创建一个索引，并且在大多数情况下，Postgres 会使用它。因此，在创建多列索引之前，一定要进行基准测试并证明其合理性。与往常一样，索引是有代价的，而且多列索引只能优化按相同顺序引用索引中列的查询，而多个单列索引可以为更多的查询提供性能提升。</p><p>然而，有些情况下多列索引确实是有意义的。对列 (a, b) 创建的索引可以被包含 WHERE a = x AND b = y 或仅使用 WHERE a = x 的查询使用，但不会被仅使用 WHERE b = y 的查询使用。所以，如果这符合你的应用程序的查询模式，多列索引方法是值得考虑的。此外，请注意，在这种情况下，仅对 a 创建索引将是多余的。</p></div></div><div id=outline-container-headline-7 class=outline-2><h2 id=headline-7>B-trees 和 Sorting</h2><div id=outline-text-headline-7 class=outline-text-2><p>B-Tree 索引一般是存储为升序排列，在一些场景下，你可以设置不同的排序。比如你想要展示一个文章的分页列表，
+按照最近的发布时间来排序。articles 上 published_at 为 NULL 的表示尚未发布。</p><p>我们可以这样创建索引：</p><div class="src src-sql"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> articles_published_at_index <span style=color:#66d9ef>ON</span> articles(published_at <span style=color:#66d9ef>DESC</span> NULLS <span style=color:#66d9ef>LAST</span>);</span></span></code></pre></div></div><p>由于我们按照 published_at 列的排序顺序查询表并限制结果，因此按相同顺序创建索引可以带来一些好处。Postgres 会从索引中以正确的顺序找到所需的行，然后访问数据块以检索数据。如果索引没有排序，Postgres 很可能会按顺序读取数据块并对结果进行排序。</p><p>当你需要‘将空值排序在最后’的行为时，这种技术主要与单列索引相关，因为否则顺序已经是可用的，因为索引可以从任意方向扫描。当在多列索引中使用，并且查询请求混合排序顺序（例如 a ASC, b DESC）时，这种技术变得更加相关。</p></div></div><div id=outline-container-headline-8 class=outline-2><h2 id=headline-8>管理和维护索引</h2><div id=outline-text-headline-8 class=outline-text-2><p>Postgres 中的索引并不会保存所有的数据，即使在查询中使用索引找到了匹配的行，仍然需要访问磁盘来获得数据。此外，行可见信息也不保存在索引中。</p><p>所以索引会带来存储和维护的成本，必须考虑是否值得去使用。例如，对于一张足够大的表的主键查找，所以可以发挥很好的作用：在索引中找到目标行，然后选择性的从磁盘中获取它们，而不是直接顺序查表。但是如果是非常小的表，比如一个城市查找表，按照城市名称搜索，可能索引就不够理想了。 因为在这种情况下，PostgreSQL 可能决定忽略索引而选择顺序扫描，这时候创建的索引只能是一个从未被使用的无效索引。</p><p>同时如果项目已经在生产过程中，想要增加索引必须十分小心，因为创建索引会倒是锁表。对于很大的数据表可能会锁住长达几个小时，不过还好 Postgres 提供了 CREATE INDEX CONCURRENTLY，能够让你避免被锁表，但是代价是增加索引的过程会变得很长。当然，这里的锁表只是不可写，数据依然是可读的。</p><p>如果一张表中的数据经常性的被更新和删除，那么长时间后索引可能会变得碎片化，这种时候需要执行重新索引（REINDEX），但是如果要重新索引较大的索引要谨慎，因为和之前一样，还是会有写锁。这个过程是在相同表的列上同时构建一个并发索引，但是使用不同的名称，然后删除原始索引并重命名新的索引，这个过程需要更长，但是不需要长时间的锁表。</p></div></div></section><div class=post-tags></div></div></div><div id=disqus_thread></div><script type=text/javascript>(function(){if(window.location.hostname=="localhost")return;var t,e=document.createElement("script");e.type="text/javascript",e.async=!0,t="yourDisqusShortname",e.src="//"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by
+Disqus.</a></noscript><a href=http://disqus.com/ class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></article></main><footer><div style=display:flex><a class=soc href=https://github.com/tywhisky rel=me title=GitHub><svg class="feather"><use href="//tywhisky.github.io/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github"/></svg></a><a class=border></a></div><div class=footer-info>2026 Tainef | <a href=https://github.com/athul/archie>Archie Theme</a> | Built with <a href=https://gohugo.io>Hugo</a></div></footer></div></body></html>

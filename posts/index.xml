@@ -1,153 +1,417 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Happy Coding</title>
-    <link>//localhost:1313/posts/</link>
-    <description>Recent content in Posts on Happy Coding</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>Tainef</copyright>
-    <lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>记一次在 Elixir 上的开源工作</title>
-      <link>//localhost:1313/posts/my-first-work-on-open-source-for-elixir/</link>
-      <pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/my-first-work-on-open-source-for-elixir/</guid>
-      <description>&lt;p&gt;&#xA;前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。&lt;/em&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[Note] Design Patterns in Elixir</title>
-      <link>//localhost:1313/posts/design-pattern-in-elixir/</link>
-      <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/design-pattern-in-elixir/</guid>
-      <description>&lt;p&gt;&#xA;This is a review note for José Valim&amp;#39;s speech on &lt;a href=&#34;https://www.youtube.com/watch?v=agkXUp0hCW8&#34;&gt;YouTube&lt;/a&gt;&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;What&amp;#39;s Design Pattern&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;A famous pic from &lt;a href=&#34;https://www.slideshare.net/slideshow/fp-patterns-ndc-london2013/42373281&#34;&gt;Functional Programming Patterns (NDC London 2013)&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;&lt;img src=&#34;../pattern-design-between-oop-and-fp.png&#34; alt=&#34;/pattern-design-between-oop-and-fp.png&#34; title=&#34;/pattern-design-between-oop-and-fp.png&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;But this might cause some misunderstandings about design patterns. An OOP programmer might think: &amp;#39;Look, how clearly design patterns are defined!&amp;#39; Meanwhile, an FP programmer might think: &amp;#39;Oh, functional programming is much better than OOP programming. There are no design patterns, everything is just functions!&amp;#39;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PostgreSQL 分区和分片</title>
-      <link>//localhost:1313/posts/partition-and-shading-on-postgresql/</link>
-      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/partition-and-shading-on-postgresql/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;分区&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;在 PostgreSQL 下拥有 Hot Table 隐患时进行删除操作是很灾难性的，一个长期运行的查询将会遍历每一条数据，标记为 dead 后执行操作，在这过程中不会释放任何空间。但有了分区，删除就变成了简单的 DROP TABLE。 它可以立即执行，成本可以忽略不计（分区还有其他好处）。当然，代价是需要重点维护。&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-2&#34;&gt;&#xA;分区操作&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;p&gt;&#xA; – 列出所有已存在的表&lt;/p&gt;&#xA;&lt;p&gt;&#xA; – 决定应创建哪些新分区（如果有的话）并创建它们，提前三天将未来的分区调出来，为操作提供一些缓冲，以防出错。&lt;/p&gt;&#xA;&lt;div class=&#34;src src-sql&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; widget_20221005 PARTITION &lt;span style=&#34;color:#66d9ef&#34;&gt;OF&lt;/span&gt; widget&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;FOR&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;VALUES&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2022-10-05&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;TO&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2022-10-06&amp;#39;&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;src src-sql&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;ALTER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; widget DETACH partition widget_20221005;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;src src-sql&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;DROP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; widget_20221005;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-3&#34;&gt;&#xA;分片&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;一种将 Postgres 数据库表分割成更小表的技术，通常用于在组成数据库实例集群的多个节点上横向分发数据，更多部署在多节点集群。&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-4&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-4&#34;&gt;&#xA;使用 Citus 分片操作&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-4&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;div class=&#34;src src-sql&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;create&lt;/span&gt; extension citus;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;src src-sql&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; create_distributed_table(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;table&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shard_column&amp;#39;&lt;/span&gt;, shard_count :&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;256&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;src src-sql&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; citus_add_node(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;worker_node_address&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;192.168.0.2&amp;#39;&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;src src-sql&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rebalance:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; rebalance_table_shards();&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PostgreSQL 索引总结</title>
-      <link>//localhost:1313/posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Sun, 24 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/</guid>
-      <description>&lt;p&gt;&#xA;Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对&#xA;所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;索引是一种从数据表中高效检索数据的方式，他只在相关联的数据量相对小时比较有用（也就是说，检索行的条件 - the WHERE clause - 是选择性的）。B-tree 索引也通常用于避免排序。&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;索引类型&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;Postgres 支持多种不同类型的索引：&lt;/p&gt;&#xA;&lt;p&gt;&#xA;– B-Tree：这是当你使用 `CREATE INDEX` 时默认的得到的索引类型。几乎所有的数据库都有 B-tree 类型的索引。&#xA;B-trees 会试图保持平衡，树的每个分支中的数据量大致相同。因此，为找到行而必须遍历的级别数始终在同一范围内。&#xA;B-tree 索引能够有效的用于相等下的范围查询。它们可以对所有数据类型进行操作，也可用于检索 NULL 值。B 树设计为可以很好地处理缓存，即使只缓存了一部分。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;– Hash Indexes：Postgres 10 之前的 Hash 索引只对等式比较有用，但是它们不是事务安全的，在崩溃之后必须手动重建。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;– Generalized Inverted Indexes (GIN)：GIN 索引对于必须映射许多值到一条数据上时非常有用。&#xA;就像 B-tree 索引被优化用于一条数据只有单个 key value，GINs 索引在 array 类型的数据上的良好变现也会很适合大文本搜索。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;– Generalized Search Tree (GiST) GiST 索引允许创建传统的平衡树结构，用于等价的和范围查询。很适合地理数据类型的大文本搜索。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;我们这里主要讨论默认的 B-Tree 索引。&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-2&#34;&gt;&#xA;为什么我的查询没有使用索引？&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;For example:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Thoughts on Unit Testing</title>
-      <link>//localhost:1313/posts/thoughts-on-unit-testing/</link>
-      <pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/thoughts-on-unit-testing/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;Writing Unit Tests Saves You Time in the Long Run&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;For those who don&amp;#39;t often write unit tests, the common thought is usually: &amp;#34;Writing tests is too time-consuming.&amp;#34; In the short term, this might seem true, but unit tests save you a lot of time in the future.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Without tests, refactoring can be a daunting task. You have to carefully test every scenario manually. If you&amp;#39;re not careful, you might introduce new bugs during the refactoring process. Moreover, you need to ensure that your changes don&amp;#39;t break other related functionalities. This alone can consume a significant amount of your time.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Differences between PostgreSQL &amp; MySQL</title>
-      <link>//localhost:1313/posts/the-diff-between-mysql-and-pg/</link>
-      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/the-diff-between-mysql-and-pg/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;License&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;MySQL&amp;#39;s license is under GPL&lt;/li&gt;&#xA;&lt;li&gt;PostgreSQL is a liberal Open Source license similar to the BSD or MIT licenses.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;GPL is a &lt;em&gt;copyleft&lt;/em&gt; license, for example, one of the reasons why Apple&amp;#39;s Mac OS is not built on top of Linux is because Linux is GPL, which means that OSX would have been forced to be opened sourced, too.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Even though MySQL adopts GPL, some people still are concerned that MySQL is owned by Oracle. It&amp;#39;s also the reason that MariaDB is forked from MySQL.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>About Redis</title>
-      <link>//localhost:1313/posts/about-redis/</link>
-      <pubDate>Fri, 28 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/about-redis/</guid>
-      <description>&lt;p&gt;&#xA;In the past projects I&amp;#39;ve worked on, Redis has been like a sugar for cache solutions. But as time went on, I&amp;#39;ve just been using it, yeah I know it&amp;#39;s a key-value model database, no SQL here, and I don&amp;#39;t know anything about its other capabilities. So maybe now is a good time to seriously learn Redis.&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;How are the keys and values organized?&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;Hash tables. Because this hash table stores all the key-value pairs, I also call it the global hash table.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[Scala] `class` and `case class`</title>
-      <link>//localhost:1313/posts/scala-calss-and-case-class/</link>
-      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/scala-calss-and-case-class/</guid>
-      <description>&lt;p&gt;&#xA;In Scala, there are two types of classes: normal classes and case classes. Here are the main differences between them:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Boilerplate code: Case classes generate a lot of boilerplate code automatically, such as equals, hashCode, toString, and a copy method. Normal classes don&amp;#39;t have this automatic generation of code, so you have to write it yourself.&lt;/li&gt;&#xA;&lt;li&gt;Immutability: By default, case classes are immutable, meaning that their fields cannot be changed after they are created. Normal classes, on the other hand, can be either mutable or immutable, depending on how you define them.&lt;/li&gt;&#xA;&lt;li&gt;Pattern matching: Case classes are designed to work well with pattern matching, because they have a built-in unapply method that allows you to extract their fields. Normal classes don&amp;#39;t have this method, so you need to define your own extractor object or method if you want to use them in pattern matching.&lt;/li&gt;&#xA;&lt;li&gt;Default arguments: Case classes allow you to define default values for their constructor arguments, making it easier to create instances of the class. Normal classes don&amp;#39;t have this feature.&lt;/li&gt;&#xA;&lt;li&gt;Inheritance: Case classes can inherit from other classes or traits, but they are not recommended for use in complex inheritance hierarchies. Normal classes are more flexible in this regard.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;Overall&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;case classes are a convenient way to define simple data structures that are immutable and can be easily used with pattern matching. If you need more flexibility or functionality, such as mutable state or complex inheritance, you should use a normal class instead.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Why Elixir is More Than Just Syntax Sugar Over Erlang</title>
-      <link>//localhost:1313/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</link>
-      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</guid>
-      <description>&lt;p&gt;&#xA;In my first year of using Elixir, I fell deeply in love with the language. However, I never really thought about why I liked Elixir so much. I mean, I can list many reasons, such as the Pipe Operator, Pattern Matching, and the powerful and flexible GenServer.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;So, if you asked me, I would definitely say it’s the syntax. Coincidentally, I soon encountered a colleague. I was eager to recommend Elixir to him, but he said, &amp;#34;Elixir is just syntax sugar over Erlang, right? So why not just use Erlang?&amp;#34;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>`Task.await/2` and `Task.await_many/2`</title>
-      <link>//localhost:1313/posts/note-about-task/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/note-about-task/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;Introduction&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;These days, I received a requirement to call several APIs simultaneously. It&amp;#39;s common sense to use Task for this purpose, and I naturally gravitated towards using it. However, I came across Task.yield/2 and wondered about the difference between it and Task.await. Let&amp;#39;s explore this.&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-2&#34;&gt;&#xA;Look some code snippets&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; ms &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6000&lt;/span&gt;] &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;async(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;map(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;await(&amp;amp;1, &lt;span style=&#34;color:#ae81ff&#34;&gt;3000&lt;/span&gt;))&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# return [2000, 4000, 6000]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; ms &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4_000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6_000&lt;/span&gt;] &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;async(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Task&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;yield_many(&lt;span style=&#34;color:#ae81ff&#34;&gt;3000&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# return ** (EXIT) time out&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-3&#34;&gt;&#xA;Summary&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;p&gt;&#xA;If you use await in Enum.map/2, each await picks up after the previous one finishes with a fresh 3-second timeout. Since each task blocks for 2 seconds before finishing, no timeout is triggered, but the total runtime exceeds the expected duration.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Trap Of `Map.update/4`</title>
-      <link>//localhost:1313/posts/trap-of-map-update/</link>
-      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/trap-of-map-update/</guid>
-      <description>&lt;p&gt;&#xA;If we want to update a value in a map of which key we can not ensure it&amp;#39;s exist.&#xA;We can get the two way quickly:&lt;/p&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; record &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(map, key, [])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;put(map, key, [new &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; record])&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;Or we can use `Map.update/4`:&lt;/p&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;update(map, key, [], &lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; record &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; [new &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; record] &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;They are look like as the same completely. But the result is different,&#xA;the result by `Map.update/4` of above code is just get the last put in value.&#xA;It will only be empty or one item in the list.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Review 2022</title>
-      <link>//localhost:1313/posts/review-2022/</link>
-      <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/review-2022/</guid>
-      <description>&lt;p&gt;&#xA;转眼已经是 2022 年的年末，这一年好像经历了很多事情，但是又好像没完成什么事。&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;Code&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;今年在工作闲暇之余完成了近 200 道的 Leetcode 算法题（基本来自于 Daily Challenge），马马虎虎吧，重点不在于刷题量，而在于对过往数据结构方面的查漏补缺。&lt;/li&gt;&#xA;&lt;li&gt;Advent of Code 2022 依然没能追上脚步，大概落后了有 5 天，毕竟 AOC 比起 Leetcode 在代码量上还是高出不少的，比较花时间。&lt;/li&gt;&#xA;&lt;li&gt;新学习的语言只有 Scala ，感兴趣的原因也非常的简单， imperative 和 function 风格相结合的语言我想一定非常适合用来做题吧？ XD。实际上在一定程度上了解这个语言后还是让我很喜欢，希望能在之后的日子里深入学习。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-2&#34;&gt;&#xA;Life&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;就在彻底开放一个礼拜后我也阳了，但是没有传染给家人，我本人也没有出现发烧等症状。在好了之后继续打了几场羽毛球也没有出现问题，不过目前病毒还在蔓延，比较令人担忧的是病毒势必是不会消失了，往后的日子里可能会不断上演同样的剧情。&lt;/li&gt;&#xA;&lt;li&gt;今年的最后两个月搬回了家和爸妈一起住，出来了两年，过往十分熟悉的事情也变得久违。明年我还是会搬出去，所以格外珍惜现在的日子。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-3&#34;&gt;&#xA;Goal&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;一直以来希望能通过自己的代码去实现一些事情，但是一直都没能找到这个 Point ，希望能在新的一年里做出一些触手可及的，看得见的成果。&lt;/li&gt;&#xA;&lt;li&gt;希望自己的英语阅读和口语技能能够上一个台阶，保持目前一直在坚持的英语阅读和练习。&lt;/li&gt;&#xA;&lt;li&gt;希望能赚更多的钱，世界很大，有很多想体验的事。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>A trap with validate_length/3 of Ecto</title>
-      <link>//localhost:1313/posts/a-trap-with-validate-length-of-ecto/</link>
-      <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/a-trap-with-validate-length-of-ecto/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-1&#34;&gt;&#xA;validate_length/3&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;p&gt;&#xA;Quote to Ecto&amp;#39;s document, this is the describe:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;@spec validate_length(t(), atom(), Keyword.t()) :: t()&#xA;Validates a change is a string or list of the given length.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&amp;#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[Docker] Differences between -v and --mount</title>
-      <link>//localhost:1313/posts/the-difference-of-mount-and-v-for-docker/</link>
-      <pubDate>Sat, 13 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/the-difference-of-mount-and-v-for-docker/</guid>
-      <description>&lt;p&gt;&#xA;Last week, I wanted to upgrade the version of my livebook in Docker. And I had a very strange problem.&#xA;I did the following:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code class=&#34;verbatim&#34;&gt;ssh&lt;/code&gt; my server&lt;/li&gt;&#xA;&lt;li&gt;docker container stop &amp;amp; rm&lt;/li&gt;&#xA;&lt;li&gt;docker images pull livebook/livebook:latest&lt;/li&gt;&#xA;&lt;li&gt;docker run&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;No errors occurred during this period and everything looks good.&#xA;But when I open the page of livebook, the update prompt is still visiting the screen.&#xA;Then I go to the settings page. The version is still 0.6.1(the latest version is 0.6.3). &lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>The road of Code Review for me</title>
-      <link>//localhost:1313/posts/the-road-of-code-review-for-me/</link>
-      <pubDate>Sat, 13 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/the-road-of-code-review-for-me/</guid>
-      <description>&lt;p&gt;&#xA;在我作为工程师在最初期，一直都是一些更有经验的老师傅 Review 我的代码，提出他们的意见，那时候，我对此也没有自己是否也应该 &#xA;Review 他人的代码的想法，一方面不了解 Code Review 是一件不比亲自开发更容易的事情，另一方面那时的我忙于 “吸收” ，也无暇顾及。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;但是随着时间的增长，我意识到了我对 Code Review 这方面的欠缺，当我不得不开始 Review 同事的代码时，我发现我遇到的最大的问题&#xA;是我没有任何想法，或是说即便有想法也会被我自洽的解释所忽略。这让我感觉很奇怪，因为我写自己的代码总是了然于胸，并且往往会在许多地方纠结不已，我不免怀疑我是否这段时间都毫无提升？&lt;/p&gt;&#xA;&lt;p&gt;&#xA;为了解决这个问题，我开始在 Review 别人代码的时候只关注需求，按照自己的理解在 Draft 或者大脑中实现一遍 “是我的话，会怎么做”，&#xA;然后回头带着自己的 Style 和遇到的问题再正式开始 Review，这个方法很有效，只有一个缺点，就是耗费我个人的成本十分巨大，而如何&#xA;解决这个问题就变成了我必须处理的事情。&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-1&#34;&gt;&#xA;What&amp;#39;s the point&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;p&gt;&#xA;按照我的观察，通常每个人的 Review 侧重都是会有区别的。与我个人而言，我认为优秀的代码的特性应该是 “可读性” 大于 “必要性能”。&#xA;因此我会优先 Review 代码的 “可读性”。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;可读性其实是一个宽大的概念，其中不止包括了&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Function 和 Module 的 “有意义的” 命名&lt;/li&gt;&#xA;&lt;li&gt;Function 和 Module 合理的结构&lt;/li&gt;&#xA;&lt;li&gt;在必要的地方是否有合适的注释&lt;/li&gt;&#xA;&lt;li&gt;PR 整体的流程是否符合常规逻辑和直觉&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-2&#34;&gt;&#xA;My Solution&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;结合需求和 Diff 最快速的了解这个 Pull Request 的流程而不去管细节实现。&lt;/li&gt;&#xA;&lt;li&gt;思考流程上是否存在问题，如果没有则按照流程 Review 具体实现。&lt;/li&gt;&#xA;&lt;li&gt;先看 Module / Function 的名字，在心中有一个自己的判断，再去对照具体实现和刚才的判断作对比。&lt;/li&gt;&#xA;&lt;li&gt;考虑性能和检查测试的覆盖。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;以上几步中其实都有和 Author 思路作对比的过程，因此最重要的一点是，任何我无法理解的地方，我都&#xA;会留下 comment ，而不是强行带入 Author ，自己给出自洽的解释，亦或是过分用力的理解这部分的代码。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Process exit rules for Elixir</title>
-      <link>//localhost:1313/posts/process-exit-rules-for-elixir/</link>
-      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/process-exit-rules-for-elixir/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-1&#34;&gt;&#xA;With the beginning&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;p&gt;&#xA;Process.flag(:trap_exit, true) 能够将 Process 发出的 Exit 信号捕获为 Msg,&lt;/p&gt;&#xA;&lt;p&gt;&#xA;型号的类型有三类, 分别是 :kill, :normal 和其他&lt;/p&gt;&#xA;&lt;p&gt;&#xA;其中被杀的进程本身捕获不到 :kill , 但是其他进程能捕获到, 可以看下面的例子。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;:kill&lt;/p&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;worker &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;flag(&lt;span style=&#34;color:#e6db74&#34;&gt;:trap_exit&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;receive&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    msg &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;IO&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inspect(msg, &lt;span style=&#34;color:#e6db74&#34;&gt;label&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;In worker&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(&lt;span style=&#34;color:#ae81ff&#34;&gt;2000&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;monitor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;flag(&lt;span style=&#34;color:#e6db74&#34;&gt;:trap_exit&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;link(worker)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;receive&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    msg &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;IO&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inspect(msg, &lt;span style=&#34;color:#e6db74&#34;&gt;label&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;In monitor&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# In monitor: {:EXIT, #PID&amp;lt;0.375.0&amp;gt;, :killed}&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;exit(worker, &lt;span style=&#34;color:#e6db74&#34;&gt;:kill&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;alive?(worker) &lt;span style=&#34;color:#f92672&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;IO&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inspect(&lt;span style=&#34;color:#e6db74&#34;&gt;label&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Worker still alive?&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# Worker still alive?: false&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;:normal&lt;/p&gt;&#xA;&lt;div class=&#34;src src-elixir&#34;&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;worker &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;flag(&lt;span style=&#34;color:#e6db74&#34;&gt;:trap_exit&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;receive&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    msg &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;IO&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inspect(msg, &lt;span style=&#34;color:#e6db74&#34;&gt;label&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;In worker&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# In worker: {:EXIT, #PID&amp;lt;0.297.0&amp;gt;, :normal}&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(&lt;span style=&#34;color:#ae81ff&#34;&gt;2000&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;monitor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; spawn(&lt;span style=&#34;color:#66d9ef&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;flag(&lt;span style=&#34;color:#e6db74&#34;&gt;:trap_exit&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;link(worker)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;receive&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    msg &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;IO&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inspect(msg, &lt;span style=&#34;color:#e6db74&#34;&gt;label&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;In monitor&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# In monitor: {:EXIT, #PID&amp;lt;0.844.0&amp;gt;, :normal}&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sleep(&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;exit(worker, &lt;span style=&#34;color:#e6db74&#34;&gt;:normal&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Process&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;alive?(worker) &lt;span style=&#34;color:#f92672&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;IO&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inspect(&lt;span style=&#34;color:#e6db74&#34;&gt;label&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Worker still alive?&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#75715e&#34;&gt;# Worker still alive?: true&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;如果用别的进程使用 :normal 去杀死一个进程, 那个进程是不会死的, 但是会当场受到&#xA;“死讯” , 如上第二段 Code 中, “In monitor” 将会在 worker 打印了死讯后 2 秒后&#xA;输出。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>[Note] Types of type systems</title>
-      <link>//localhost:1313/posts/notedynamic-or-static--strong-or-weak/</link>
-      <pubDate>Fri, 13 May 2022 16:53:57 +0800</pubDate>
-      <guid>//localhost:1313/posts/notedynamic-or-static--strong-or-weak/</guid>
-      <description>&lt;h3 id=&#34;dynamic-and-static-typing&#34;&gt;Dynamic and static typing&lt;/h3&gt;&#xA;&lt;p&gt;With static typing, type checking is performed at compile time. Dynamic typing, on the other hand, defers type checking to the run time, so type mismatches become run-time error.&lt;/p&gt;&#xA;&lt;p&gt;Dynamic typing does not impose any typing constraints at compile time.&lt;/p&gt;&#xA;&lt;h3 id=&#34;weak-and-strong-typing&#34;&gt;Weak and strong typing&lt;/h3&gt;&#xA;&lt;p&gt;Note that although a type system is either dynamic (type checking at run time) or static(type checking at compile time), its strength lies on a spectrum: the more implicit conversions it performs, the weaker it is.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>How Hot Reloading with Webpack and Phoenix</title>
-      <link>//localhost:1313/posts/how-hot-reloading-for-phoenix-project/</link>
-      <pubDate>Fri, 15 Oct 2021 11:30:03 +0000</pubDate>
-      <guid>//localhost:1313/posts/how-hot-reloading-for-phoenix-project/</guid>
-      <description>&lt;h3 id=&#34;live-reloading-和-hot-reloading-的区别&#34;&gt;Live Reloading 和 Hot Reloading 的区别&lt;/h3&gt;&#xA;&lt;p&gt;Live Reloading是在浏览器进行更改后自动重新加载整个页面，使开发者不再需要切换浏览器手动点击 &lt;code&gt;cmd + r&lt;/code&gt; 。在这点上 Phoenix 通过 Phoenix LiveReload 可以提供开箱即用的支持，通过 &lt;code&gt;mix phx.new&lt;/code&gt; 创建的项目默认配置了 Phoenix LiveReload。&lt;/p&gt;&#xA;&lt;p&gt;但是，Live Reloading依然存在一个缺点，在开发现在越来越高度交互的 Web 应用时，频繁的代码改动与调试，意味着频繁的重新加载整个页面，很多情况你也许只希望修改一些样式，Live Reloading会显得尤为耗时，而为了解决这个问题，Hot Reloading 显得尤为重要。&lt;/p&gt;&#xA;&lt;h3 id=&#34;注意事项&#34;&gt;注意事项&lt;/h3&gt;&#xA;&lt;p&gt;本文通过 React + Webpack 进行配置举例（因为自身业务），以前 React 的 Hot Reloading 是通过 &lt;code&gt;HMR&lt;/code&gt; (Hot Module Replacement) 实现的，因为一些&lt;a href=&#34;https://github.com/facebook/react/blob/f5d946da6be8d0cefd66ab3d029a55ab54ebb460/packages/react-refresh/README.md&#34;&gt;技术原因&lt;/a&gt;不再使用这种方法。&lt;/p&gt;&#xA;&lt;p&gt;我们将使用 @pmmmwh/react-refresh-webpack-plugin 这个实验性的 Webpack 插件来实现，虽然这个插件在运行一段时间后，&lt;code&gt;webpack-dev-server&lt;/code&gt; 最终会吃掉大量内存，但是依然可以通过合适的配置和手动刷新，使其成为一个强大的工具。&lt;/p&gt;&#xA;&lt;h3 id=&#34;npm&#34;&gt;NPM&lt;/h3&gt;&#xA;&lt;p&gt;首先在你的前端项目中执行，如果你是用的是 &lt;code&gt;yarn&lt;/code&gt; 请自行修改命令&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;npm install --save-dev @pmmmwh/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;react-refresh-webpack-plugin&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;webpack-dev-server react-refresh&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;react-refresh-typescript&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;webpack-配置&#34;&gt;Webpack 配置&lt;/h3&gt;&#xA;&lt;p&gt;在逻辑结构上我们将把 &lt;code&gt;webpack-dev-server&lt;/code&gt; 置于 Phoenix 应用之前。使 Webpack 能够将 websocket 注入页面，以便在需要进行 Hot Reloading 时通知浏览器。为了更好地理解，我们配置 &lt;code&gt;webpack-dev-server&lt;/code&gt; 启动在 4000 端口并且代理所有的请求到 4001 端口，也就是我们 Phoenix 应用运行的端口。所以现在浏览器仍然像 &lt;code&gt;http://localhost:4000&lt;/code&gt; 发出请求，但是将会被透明代理到 Phoenix。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Why Blog?</title>
-      <link>//localhost:1313/posts/why-blog/</link>
-      <pubDate>Tue, 15 Jun 2021 12:53:57 +0800</pubDate>
-      <guid>//localhost:1313/posts/why-blog/</guid>
-      <description>&lt;h1 id=&#34;积累&#34;&gt;积累&lt;/h1&gt;&#xA;&lt;p&gt;过去我也曾用 Hexo 搭建过博客，但那时我处在各种意义上的初级阶段，搭一个博客更多可能只是为了好玩，&#xA;随便写了几篇没什么营养和价值的文章后就不了了之了，而这次，我想认真的在这里给自己做一个积累。&lt;/p&gt;&#xA;&lt;p&gt;另一方面，因为 Org-Mode 的出现让我十分想通过它来实践 GTD ，我觉得博客会是其中一种不错的方式。&lt;/p&gt;&#xA;&lt;h1 id=&#34;分享&#34;&gt;分享&lt;/h1&gt;&#xA;&lt;p&gt;我关注的一些牛人，用博客的方式输出着自己的能量，我自己就是受到他们的影响而不断前进。&lt;/p&gt;&#xA;&lt;p&gt;无论我目前是否有足够的水准，我希望能成为像他们一样的人。&lt;/p&gt;&#xA;&lt;h1 id=&#34;锻炼&#34;&gt;锻炼&lt;/h1&gt;&#xA;&lt;p&gt;实际生活中英文书写的锻炼机会非常的少，出现最多的场景可能还是 &lt;code&gt;git commit&lt;/code&gt; 中的几句描述。&lt;/p&gt;&#xA;&lt;p&gt;希望能够通过英文博文的方式，来锻炼自己的英文水平。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>//localhost:1313/posts/whats-formatter/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/whats-formatter/</guid>
-      <description>&lt;h2 id=&#34;为什么编辑器-format-不可靠&#34;&gt;为什么编辑器 Format “不可靠”&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-编辑器拥有自己的-format-规则&#34;&gt;1. 编辑器拥有自己的 Format 规则&lt;/h3&gt;&#xA;&lt;p&gt;比如 VSCode 默认 TypeScript Format 规则：当我们不为 ts 文件指定任何 formatter 的情况下，默认将会按照这个规则执行 Code Format。&lt;/p&gt;&#xA;&lt;p&gt;比如我这里设置结尾不允许存在分号，那么 &lt;code&gt;onSave&lt;/code&gt; Format 的时候我们每次保存就会去掉所有的分号，但是如果我们定义的 prettier 配置文件中要求分号，那么我们就会将不同风格的代码提交上去，如果之后有人跑了全局 Format，就会出现非自己的改动，那才会是问题所在。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;VSCode 配置&#xA;&lt;img src=&#34;image.png&#34; alt=&#34;Alt text&#34;&gt;&#xA;Prettier 规则&#xA;&lt;img src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;当然这里的问题并不是编辑器的缺陷抑或是全局 Format 的缺陷，问题的重点是 .vscode 等个人编辑器配置文件我们一般是不纳入 git 的版本管理，而不像 .prettierrc.json(prettier 规则配置文件) 拥有 git 记录，因此在我们引入了 prettier 的情况下，我们应该以 prettier 的规则为准（&lt;strong&gt;否则就不应该引入&lt;/strong&gt;）。&lt;/p&gt;&#xA;&lt;p&gt;当然通过在 Readme 中约束团队进行正确的编辑器 Format 配置也是一种方式，但是在前者（Prettier）已经存在的情况下，这种方式显然更风险和复杂，特别是每个人的编辑器可能还不同。&lt;/p&gt;&#xA;&lt;h3 id=&#34;2-编辑器插件版本导致的-format-结果差异&#34;&gt;2. 编辑器插件版本导致的 Format 结果差异&lt;/h3&gt;&#xA;&lt;p&gt;要在编辑器中解决上诉的问题也很简单，安装 Prettier 插件，并且在默认 Formatter 处选中：&#xA;&lt;img src=&#34;image-2.png&#34; alt=&#34;Alt text&#34;&gt;&#xA;&lt;img src=&#34;image-3.png&#34; alt=&#34;Alt text&#34;&gt;&#xA;那么很显然这就会带来新的隐患：插件版本不同导致的 Format 风格差异。比如 A 成员用 Prettier 3.0，B 成员用 2.8，同一文件格式化结果不同。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Happy Coding</title><link>//tywhisky.github.io/posts/</link><description>Recent content in Posts on Happy Coding</description><generator>Hugo</generator><language>en-us</language><copyright>Tainef</copyright><lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="//tywhisky.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>记一次在 Elixir 上的开源工作</title><link>//tywhisky.github.io/posts/my-first-work-on-open-source-for-elixir/</link><pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/my-first-work-on-open-source-for-elixir/</guid><description>&lt;p&gt;
+前几天在闲暇之余浏览 Github ，发现不少开源项目都存在大量的 Issue 和 Pull Request 没有得到解决。这其实也是比较正常的情况，对于大多数没有稳定收入来源的开源项目来说，你不能要求核心团队提供任何多余的服务，而是应该发起一个 PR 来帮助项目的成长。于是我突然想起了 Elixir ，这门我已经写了 3 年，在我心中最适合 Web 开发的函数式编程，也许我也有什么能帮上忙的说不定。&lt;/p&gt;
+&lt;p&gt;
+令我惊讶的是，Elixir 的 Issue 仅有 20 条左右，PR 也仅有 5 条以内，并且很多陈年老 Issue ，原因可能一方面是 Elixir 经过了 10 年多的迭代进入了稳定期，更重要的原因那就是创始人 José Valim 和他的团队铁人般的提交数量，整个 Elixir 项目，José Valim 一人就提供了接近 5000 的 commits ，断崖领先其他人。而除了 Elixir 外，他也是 Phoenix/Livebook 等一系列核心生态项目的主力负责人和开发者。&lt;/p&gt;
+&lt;p&gt;
+Issue 列表中每一条都有 José Valim 的回复并且打上了各种标签著名 Issue 类型，有些是需要 Issue OP 提供更多信息的 bug ，有些则是简单的 Feature 描述，还有一些 Chores 相关的杂活，整体 Issue 都比较清晰。我浏览 Issue 列表发现了一个 bug 标签的帖子，主要问题是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;当前 IEx 中对于三种 `normal` 类型的 EXIT 信号不会提供任何报错信息，José Valim 的目标是将这些报错信息全部展示（尽管可能会造成一些报错信息的重复）。&lt;/em&gt;&lt;/p&gt;</description></item><item><title>[Note] Design Patterns in Elixir</title><link>//tywhisky.github.io/posts/design-pattern-in-elixir/</link><pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/design-pattern-in-elixir/</guid><description>&lt;p&gt;
+This is a review note for José Valim&amp;#39;s speech on &lt;a href="https://www.youtube.com/watch?v=agkXUp0hCW8"&gt;YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+What&amp;#39;s Design Pattern
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+A famous pic from &lt;a href="https://www.slideshare.net/slideshow/fp-patterns-ndc-london2013/42373281"&gt;Functional Programming Patterns (NDC London 2013)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;img src="//tywhisky.github.io/pattern-design-between-oop-and-fp.png" alt="/pattern-design-between-oop-and-fp.png" title="/pattern-design-between-oop-and-fp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;
+But this might cause some misunderstandings about design patterns. An OOP programmer might think: &amp;#39;Look, how clearly design patterns are defined!&amp;#39; Meanwhile, an FP programmer might think: &amp;#39;Oh, functional programming is much better than OOP programming. There are no design patterns, everything is just functions!&amp;#39;&lt;/p&gt;</description></item><item><title>PostgreSQL 分区和分片</title><link>//tywhisky.github.io/posts/partition-and-shading-on-postgresql/</link><pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/partition-and-shading-on-postgresql/</guid><description>&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+分区
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+分区表并不是每天都要用到的，但在某些情况下，尤其是当你有一个预计会不断增长的大容量表时，分区表就显得尤为重要。&lt;/p&gt;
+&lt;p&gt;
+在 PostgreSQL 下拥有 Hot Table 隐患时进行删除操作是很灾难性的，一个长期运行的查询将会遍历每一条数据，标记为 dead 后执行操作，在这过程中不会释放任何空间。但有了分区，删除就变成了简单的 DROP TABLE。 它可以立即执行，成本可以忽略不计（分区还有其他好处）。当然，代价是需要重点维护。&lt;/p&gt;
+&lt;div id="outline-container-headline-2" class="outline-3"&gt;
+&lt;h3 id="headline-2"&gt;
+分区操作
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-2" class="outline-text-3"&gt;
+&lt;p&gt;
+ – 列出所有已存在的表&lt;/p&gt;
+&lt;p&gt;
+ – 决定应创建哪些新分区（如果有的话）并创建它们，提前三天将未来的分区调出来，为操作提供一些缓冲，以防出错。&lt;/p&gt;
+&lt;div class="src src-sql"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;CREATE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;TABLE&lt;/span&gt; widget_20221005 PARTITION &lt;span style="color:#66d9ef"&gt;OF&lt;/span&gt; widget
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;FOR&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;VALUES&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; (&lt;span style="color:#e6db74"&gt;&amp;#39;2022-10-05&amp;#39;&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;TO&lt;/span&gt; (&lt;span style="color:#e6db74"&gt;&amp;#39;2022-10-06&amp;#39;&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="src src-sql"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;ALTER&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;TABLE&lt;/span&gt; widget DETACH partition widget_20221005;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="src src-sql"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;DROP&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;TABLE&lt;/span&gt; widget_20221005;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+INSERT 和 UPDATE 都发生在父表上，因此分区完全从正常的应用程序逻辑中抽象出来。这样我们就完成了一次简单的分区操作。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-headline-3" class="outline-2"&gt;
+&lt;h2 id="headline-3"&gt;
+分片
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-3" class="outline-text-2"&gt;
+&lt;p&gt;
+一种将 Postgres 数据库表分割成更小表的技术，通常用于在组成数据库实例集群的多个节点上横向分发数据，更多部署在多节点集群。&lt;/p&gt;
+&lt;div id="outline-container-headline-4" class="outline-3"&gt;
+&lt;h3 id="headline-4"&gt;
+使用 Citus 分片操作
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-4" class="outline-text-3"&gt;
+&lt;div class="src src-sql"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;create&lt;/span&gt; extension citus;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="src src-sql"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt; create_distributed_table(&lt;span style="color:#e6db74"&gt;&amp;#39;table&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;shard_column&amp;#39;&lt;/span&gt;, shard_count :&lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;256&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="src src-sql"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; citus_add_node(&lt;span style="color:#e6db74"&gt;&amp;#39;worker_node_address&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;192.168.0.2&amp;#39;&lt;/span&gt;);&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="src src-sql"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rebalance:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt; rebalance_table_shards();&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+除了简单方便外，使用 Citus 分片的好处还有性能：由于分片本质上也是散列分区的一种形式，因此分区的一些性能优势也适用于分片。 特别是，autovacuum 会在集群中的所有 Citus 分片上并行运行。&lt;/p&gt;</description></item><item><title>PostgreSQL 索引总结</title><link>//tywhisky.github.io/posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/</link><pubDate>Sun, 24 Dec 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/postgresql-%E7%B4%A2%E5%BC%95%E6%80%BB%E7%BB%93/</guid><description>&lt;p&gt;
+Postgres 中有许多的索引类型，对应着不同的使用场景。在这篇总结中我们将对
+所有可用的索引类型进行一个概述，并且解释 B-trees 这个最常见的索引类型的不同使用方式。&lt;/p&gt;
+&lt;p&gt;
+索引是一种从数据表中高效检索数据的方式，他只在相关联的数据量相对小时比较有用（也就是说，检索行的条件 - the WHERE clause - 是选择性的）。B-tree 索引也通常用于避免排序。&lt;/p&gt;
+&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+索引类型
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+Postgres 支持多种不同类型的索引：&lt;/p&gt;
+&lt;p&gt;
+– B-Tree：这是当你使用 `CREATE INDEX` 时默认的得到的索引类型。几乎所有的数据库都有 B-tree 类型的索引。
+B-trees 会试图保持平衡，树的每个分支中的数据量大致相同。因此，为找到行而必须遍历的级别数始终在同一范围内。
+B-tree 索引能够有效的用于相等下的范围查询。它们可以对所有数据类型进行操作，也可用于检索 NULL 值。B 树设计为可以很好地处理缓存，即使只缓存了一部分。&lt;/p&gt;
+&lt;p&gt;
+– Hash Indexes：Postgres 10 之前的 Hash 索引只对等式比较有用，但是它们不是事务安全的，在崩溃之后必须手动重建。&lt;/p&gt;
+&lt;p&gt;
+– Generalized Inverted Indexes (GIN)：GIN 索引对于必须映射许多值到一条数据上时非常有用。
+就像 B-tree 索引被优化用于一条数据只有单个 key value，GINs 索引在 array 类型的数据上的良好变现也会很适合大文本搜索。&lt;/p&gt;
+&lt;p&gt;
+– Generalized Search Tree (GiST) GiST 索引允许创建传统的平衡树结构，用于等价的和范围查询。很适合地理数据类型的大文本搜索。&lt;/p&gt;
+&lt;p&gt;
+我们这里主要讨论默认的 B-Tree 索引。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-headline-2" class="outline-2"&gt;
+&lt;h2 id="headline-2"&gt;
+为什么我的查询没有使用索引？
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-2" class="outline-text-2"&gt;
+&lt;p&gt;
+实际业务中，Postgres planner 可能根本没有用到索引，这看起来没什么特别的原因，但是可能大多时候反而是正确的。&lt;/p&gt;
+&lt;p&gt;
+For example:&lt;/p&gt;</description></item><item><title>Thoughts on Unit Testing</title><link>//tywhisky.github.io/posts/thoughts-on-unit-testing/</link><pubDate>Sun, 27 Aug 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/thoughts-on-unit-testing/</guid><description>&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+Writing Unit Tests Saves You Time in the Long Run
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+For those who don&amp;#39;t often write unit tests, the common thought is usually: &amp;#34;Writing tests is too time-consuming.&amp;#34; In the short term, this might seem true, but unit tests save you a lot of time in the future.&lt;/p&gt;
+&lt;p&gt;
+Without tests, refactoring can be a daunting task. You have to carefully test every scenario manually. If you&amp;#39;re not careful, you might introduce new bugs during the refactoring process. Moreover, you need to ensure that your changes don&amp;#39;t break other related functionalities. This alone can consume a significant amount of your time.&lt;/p&gt;</description></item><item><title>Differences between PostgreSQL &amp; MySQL</title><link>//tywhisky.github.io/posts/the-diff-between-mysql-and-pg/</link><pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/the-diff-between-mysql-and-pg/</guid><description>&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+License
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;ul&gt;
+&lt;li&gt;MySQL&amp;#39;s license is under GPL&lt;/li&gt;
+&lt;li&gt;PostgreSQL is a liberal Open Source license similar to the BSD or MIT licenses.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GPL is a &lt;em&gt;copyleft&lt;/em&gt; license, for example, one of the reasons why Apple&amp;#39;s Mac OS is not built on top of Linux is because Linux is GPL, which means that OSX would have been forced to be opened sourced, too.&lt;/p&gt;
+&lt;p&gt;
+Even though MySQL adopts GPL, some people still are concerned that MySQL is owned by Oracle. It&amp;#39;s also the reason that MariaDB is forked from MySQL.&lt;/p&gt;</description></item><item><title>About Redis</title><link>//tywhisky.github.io/posts/about-redis/</link><pubDate>Fri, 28 Jul 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/about-redis/</guid><description>&lt;p&gt;
+In the past projects I&amp;#39;ve worked on, Redis has been like a sugar for cache solutions. But as time went on, I&amp;#39;ve just been using it, yeah I know it&amp;#39;s a key-value model database, no SQL here, and I don&amp;#39;t know anything about its other capabilities. So maybe now is a good time to seriously learn Redis.&lt;/p&gt;
+&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+How are the keys and values organized?
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+Hash tables. Because this hash table stores all the key-value pairs, I also call it the global hash table.&lt;/p&gt;</description></item><item><title>[Scala] `class` and `case class`</title><link>//tywhisky.github.io/posts/scala-calss-and-case-class/</link><pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/scala-calss-and-case-class/</guid><description>&lt;p&gt;
+In Scala, there are two types of classes: normal classes and case classes. Here are the main differences between them:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Boilerplate code: Case classes generate a lot of boilerplate code automatically, such as equals, hashCode, toString, and a copy method. Normal classes don&amp;#39;t have this automatic generation of code, so you have to write it yourself.&lt;/li&gt;
+&lt;li&gt;Immutability: By default, case classes are immutable, meaning that their fields cannot be changed after they are created. Normal classes, on the other hand, can be either mutable or immutable, depending on how you define them.&lt;/li&gt;
+&lt;li&gt;Pattern matching: Case classes are designed to work well with pattern matching, because they have a built-in unapply method that allows you to extract their fields. Normal classes don&amp;#39;t have this method, so you need to define your own extractor object or method if you want to use them in pattern matching.&lt;/li&gt;
+&lt;li&gt;Default arguments: Case classes allow you to define default values for their constructor arguments, making it easier to create instances of the class. Normal classes don&amp;#39;t have this feature.&lt;/li&gt;
+&lt;li&gt;Inheritance: Case classes can inherit from other classes or traits, but they are not recommended for use in complex inheritance hierarchies. Normal classes are more flexible in this regard.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+Overall
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;case classes are a convenient way to define simple data structures that are immutable and can be easily used with pattern matching. If you need more flexibility or functionality, such as mutable state or complex inheritance, you should use a normal class instead.&lt;/p&gt;</description></item><item><title>Why Elixir is More Than Just Syntax Sugar Over Erlang</title><link>//tywhisky.github.io/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</link><pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/why-elixir-is-more-than-just-syntax-sugar-over-erlang/</guid><description>&lt;p&gt;
+In my first year of using Elixir, I fell deeply in love with the language. However, I never really thought about why I liked Elixir so much. I mean, I can list many reasons, such as the Pipe Operator, Pattern Matching, and the powerful and flexible GenServer.&lt;/p&gt;
+&lt;p&gt;
+So, if you asked me, I would definitely say it’s the syntax. Coincidentally, I soon encountered a colleague. I was eager to recommend Elixir to him, but he said, &amp;#34;Elixir is just syntax sugar over Erlang, right? So why not just use Erlang?&amp;#34;&lt;/p&gt;</description></item><item><title>`Task.await/2` and `Task.await_many/2`</title><link>//tywhisky.github.io/posts/note-about-task/</link><pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/note-about-task/</guid><description>&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+Introduction
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+These days, I received a requirement to call several APIs simultaneously. It&amp;#39;s common sense to use Task for this purpose, and I naturally gravitated towards using it. However, I came across Task.yield/2 and wondered about the difference between it and Task.await. Let&amp;#39;s explore this.&lt;/p&gt;
+&lt;div id="outline-container-headline-2" class="outline-3"&gt;
+&lt;h3 id="headline-2"&gt;
+Look some code snippets
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-2" class="outline-text-3"&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; ms &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;2_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;6000&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;async(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;|&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Enum&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;map(&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;await(&amp;amp;1, &lt;span style="color:#ae81ff"&gt;3000&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# return [2000, 4000, 6000]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; ms &lt;span style="color:#f92672"&gt;&amp;lt;-&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;2_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;4_000&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;6_000&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;async(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(ms); ms &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;|&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Task&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;yield_many(&lt;span style="color:#ae81ff"&gt;3000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# return ** (EXIT) time out&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-headline-3" class="outline-3"&gt;
+&lt;h3 id="headline-3"&gt;
+Summary
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-3" class="outline-text-3"&gt;
+&lt;p&gt;
+If you use await in Enum.map/2, each await picks up after the previous one finishes with a fresh 3-second timeout. Since each task blocks for 2 seconds before finishing, no timeout is triggered, but the total runtime exceeds the expected duration.&lt;/p&gt;</description></item><item><title>Trap Of `Map.update/4`</title><link>//tywhisky.github.io/posts/trap-of-map-update/</link><pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/trap-of-map-update/</guid><description>&lt;p&gt;
+If we want to update a value in a map of which key we can not ensure it&amp;#39;s exist.
+We can get the two way quickly:&lt;/p&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; record &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Map&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(map, key, [])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Map&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;put(map, key, [new &lt;span style="color:#f92672"&gt;|&lt;/span&gt; record])&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Or we can use `Map.update/4`:&lt;/p&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Map&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;update(map, key, [], &lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; record &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; [new &lt;span style="color:#f92672"&gt;|&lt;/span&gt; record] &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+They are look like as the same completely. But the result is different,
+the result by `Map.update/4` of above code is just get the last put in value.
+It will only be empty or one item in the list.&lt;/p&gt;</description></item><item><title>Review 2022</title><link>//tywhisky.github.io/posts/review-2022/</link><pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/review-2022/</guid><description>&lt;p&gt;
+转眼已经是 2022 年的年末，这一年好像经历了很多事情，但是又好像没完成什么事。&lt;/p&gt;
+&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+Code
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;ul&gt;
+&lt;li&gt;今年在工作闲暇之余完成了近 200 道的 Leetcode 算法题（基本来自于 Daily Challenge），马马虎虎吧，重点不在于刷题量，而在于对过往数据结构方面的查漏补缺。&lt;/li&gt;
+&lt;li&gt;Advent of Code 2022 依然没能追上脚步，大概落后了有 5 天，毕竟 AOC 比起 Leetcode 在代码量上还是高出不少的，比较花时间。&lt;/li&gt;
+&lt;li&gt;新学习的语言只有 Scala ，感兴趣的原因也非常的简单， imperative 和 function 风格相结合的语言我想一定非常适合用来做题吧？ XD。实际上在一定程度上了解这个语言后还是让我很喜欢，希望能在之后的日子里深入学习。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-headline-2" class="outline-2"&gt;
+&lt;h2 id="headline-2"&gt;
+Life
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-2" class="outline-text-2"&gt;
+&lt;ul&gt;
+&lt;li&gt;就在彻底开放一个礼拜后我也阳了，但是没有传染给家人，我本人也没有出现发烧等症状。在好了之后继续打了几场羽毛球也没有出现问题，不过目前病毒还在蔓延，比较令人担忧的是病毒势必是不会消失了，往后的日子里可能会不断上演同样的剧情。&lt;/li&gt;
+&lt;li&gt;今年的最后两个月搬回了家和爸妈一起住，出来了两年，过往十分熟悉的事情也变得久违。明年我还是会搬出去，所以格外珍惜现在的日子。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-headline-3" class="outline-2"&gt;
+&lt;h2 id="headline-3"&gt;
+Goal
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-3" class="outline-text-2"&gt;
+&lt;ul&gt;
+&lt;li&gt;一直以来希望能通过自己的代码去实现一些事情，但是一直都没能找到这个 Point ，希望能在新的一年里做出一些触手可及的，看得见的成果。&lt;/li&gt;
+&lt;li&gt;希望自己的英语阅读和口语技能能够上一个台阶，保持目前一直在坚持的英语阅读和练习。&lt;/li&gt;
+&lt;li&gt;希望能赚更多的钱，世界很大，有很多想体验的事。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>A trap with validate_length/3 of Ecto</title><link>//tywhisky.github.io/posts/a-trap-with-validate-length-of-ecto/</link><pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/a-trap-with-validate-length-of-ecto/</guid><description>&lt;div id="outline-container-headline-1" class="outline-3"&gt;
+&lt;h3 id="headline-1"&gt;
+validate_length/3
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-3"&gt;
+&lt;p&gt;
+Quote to Ecto&amp;#39;s document, this is the describe:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@spec validate_length(t(), atom(), Keyword.t()) :: t()
+Validates a change is a string or list of the given length.&lt;/p&gt;
+&lt;p&gt;
+Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&amp;#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).&lt;/p&gt;</description></item><item><title>[Docker] Differences between -v and --mount</title><link>//tywhisky.github.io/posts/the-difference-of-mount-and-v-for-docker/</link><pubDate>Sat, 13 Aug 2022 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/the-difference-of-mount-and-v-for-docker/</guid><description>&lt;p&gt;
+Last week, I wanted to upgrade the version of my livebook in Docker. And I had a very strange problem.
+I did the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class="verbatim"&gt;ssh&lt;/code&gt; my server&lt;/li&gt;
+&lt;li&gt;docker container stop &amp;amp; rm&lt;/li&gt;
+&lt;li&gt;docker images pull livebook/livebook:latest&lt;/li&gt;
+&lt;li&gt;docker run&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;No errors occurred during this period and everything looks good.
+But when I open the page of livebook, the update prompt is still visiting the screen.
+Then I go to the settings page. The version is still 0.6.1(the latest version is 0.6.3). &lt;/p&gt;</description></item><item><title>The road of Code Review for me</title><link>//tywhisky.github.io/posts/the-road-of-code-review-for-me/</link><pubDate>Sat, 13 Aug 2022 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/the-road-of-code-review-for-me/</guid><description>&lt;p&gt;
+在我作为工程师在最初期，一直都是一些更有经验的老师傅 Review 我的代码，提出他们的意见，那时候，我对此也没有自己是否也应该 
+Review 他人的代码的想法，一方面不了解 Code Review 是一件不比亲自开发更容易的事情，另一方面那时的我忙于 “吸收” ，也无暇顾及。&lt;/p&gt;
+&lt;p&gt;
+但是随着时间的增长，我意识到了我对 Code Review 这方面的欠缺，当我不得不开始 Review 同事的代码时，我发现我遇到的最大的问题
+是我没有任何想法，或是说即便有想法也会被我自洽的解释所忽略。这让我感觉很奇怪，因为我写自己的代码总是了然于胸，并且往往会在许多地方纠结不已，我不免怀疑我是否这段时间都毫无提升？&lt;/p&gt;
+&lt;p&gt;
+为了解决这个问题，我开始在 Review 别人代码的时候只关注需求，按照自己的理解在 Draft 或者大脑中实现一遍 “是我的话，会怎么做”，
+然后回头带着自己的 Style 和遇到的问题再正式开始 Review，这个方法很有效，只有一个缺点，就是耗费我个人的成本十分巨大，而如何
+解决这个问题就变成了我必须处理的事情。&lt;/p&gt;
+&lt;div id="outline-container-headline-1" class="outline-3"&gt;
+&lt;h3 id="headline-1"&gt;
+What&amp;#39;s the point
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-3"&gt;
+&lt;p&gt;
+按照我的观察，通常每个人的 Review 侧重都是会有区别的。与我个人而言，我认为优秀的代码的特性应该是 “可读性” 大于 “必要性能”。
+因此我会优先 Review 代码的 “可读性”。&lt;/p&gt;
+&lt;p&gt;
+可读性其实是一个宽大的概念，其中不止包括了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Function 和 Module 的 “有意义的” 命名&lt;/li&gt;
+&lt;li&gt;Function 和 Module 合理的结构&lt;/li&gt;
+&lt;li&gt;在必要的地方是否有合适的注释&lt;/li&gt;
+&lt;li&gt;PR 整体的流程是否符合常规逻辑和直觉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="outline-container-headline-2" class="outline-3"&gt;
+&lt;h3 id="headline-2"&gt;
+My Solution
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-2" class="outline-text-3"&gt;
+&lt;ol&gt;
+&lt;li&gt;结合需求和 Diff 最快速的了解这个 Pull Request 的流程而不去管细节实现。&lt;/li&gt;
+&lt;li&gt;思考流程上是否存在问题，如果没有则按照流程 Review 具体实现。&lt;/li&gt;
+&lt;li&gt;先看 Module / Function 的名字，在心中有一个自己的判断，再去对照具体实现和刚才的判断作对比。&lt;/li&gt;
+&lt;li&gt;考虑性能和检查测试的覆盖。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上几步中其实都有和 Author 思路作对比的过程，因此最重要的一点是，任何我无法理解的地方，我都
+会留下 comment ，而不是强行带入 Author ，自己给出自洽的解释，亦或是过分用力的理解这部分的代码。&lt;/p&gt;</description></item><item><title>Process exit rules for Elixir</title><link>//tywhisky.github.io/posts/process-exit-rules-for-elixir/</link><pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/process-exit-rules-for-elixir/</guid><description>&lt;div id="outline-container-headline-1" class="outline-3"&gt;
+&lt;h3 id="headline-1"&gt;
+With the beginning
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-3"&gt;
+&lt;p&gt;
+Process.flag(:trap_exit, true) 能够将 Process 发出的 Exit 信号捕获为 Msg,&lt;/p&gt;
+&lt;p&gt;
+型号的类型有三类, 分别是 :kill, :normal 和其他&lt;/p&gt;
+&lt;p&gt;
+其中被杀的进程本身捕获不到 :kill , 但是其他进程能捕获到, 可以看下面的例子。&lt;/p&gt;
+&lt;p&gt;
+:kill&lt;/p&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;worker &lt;span style="color:#f92672"&gt;=&lt;/span&gt; spawn(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;flag(&lt;span style="color:#e6db74"&gt;:trap_exit&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;receive&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; msg &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;IO&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inspect(msg, &lt;span style="color:#e6db74"&gt;label&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;In worker&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;2000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;monitor &lt;span style="color:#f92672"&gt;=&lt;/span&gt; spawn(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;flag(&lt;span style="color:#e6db74"&gt;:trap_exit&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;link(worker)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;receive&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; msg &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;IO&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inspect(msg, &lt;span style="color:#e6db74"&gt;label&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;In monitor&amp;#34;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# In monitor: {:EXIT, #PID&amp;lt;0.375.0&amp;gt;, :killed}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;exit(worker, &lt;span style="color:#e6db74"&gt;:kill&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;alive?(worker) &lt;span style="color:#f92672"&gt;|&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;IO&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inspect(&lt;span style="color:#e6db74"&gt;label&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;Worker still alive?&amp;#34;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# Worker still alive?: false&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+:normal&lt;/p&gt;
+&lt;div class="src src-elixir"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-elixir" data-lang="elixir"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;worker &lt;span style="color:#f92672"&gt;=&lt;/span&gt; spawn(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;flag(&lt;span style="color:#e6db74"&gt;:trap_exit&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;receive&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; msg &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;IO&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inspect(msg, &lt;span style="color:#e6db74"&gt;label&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;In worker&amp;#34;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# In worker: {:EXIT, #PID&amp;lt;0.297.0&amp;gt;, :normal}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;2000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;monitor &lt;span style="color:#f92672"&gt;=&lt;/span&gt; spawn(&lt;span style="color:#66d9ef"&gt;fn&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;flag(&lt;span style="color:#e6db74"&gt;:trap_exit&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;link(worker)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;receive&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; msg &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;IO&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inspect(msg, &lt;span style="color:#e6db74"&gt;label&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;In monitor&amp;#34;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# In monitor: {:EXIT, #PID&amp;lt;0.844.0&amp;gt;, :normal}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sleep(&lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;exit(worker, &lt;span style="color:#e6db74"&gt;:normal&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;Process&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;alive?(worker) &lt;span style="color:#f92672"&gt;|&amp;gt;&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;IO&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inspect(&lt;span style="color:#e6db74"&gt;label&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;Worker still alive?&amp;#34;&lt;/span&gt;) &lt;span style="color:#75715e"&gt;# Worker still alive?: true&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+如果用别的进程使用 :normal 去杀死一个进程, 那个进程是不会死的, 但是会当场受到
+“死讯” , 如上第二段 Code 中, “In monitor” 将会在 worker 打印了死讯后 2 秒后
+输出。&lt;/p&gt;</description></item><item><title>[Note] Types of type systems</title><link>//tywhisky.github.io/posts/notedynamic-or-static--strong-or-weak/</link><pubDate>Fri, 13 May 2022 16:53:57 +0800</pubDate><guid>//tywhisky.github.io/posts/notedynamic-or-static--strong-or-weak/</guid><description>&lt;h3 id="dynamic-and-static-typing"&gt;Dynamic and static typing&lt;/h3&gt;
+&lt;p&gt;With static typing, type checking is performed at compile time. Dynamic typing, on the other hand, defers type checking to the run time, so type mismatches become run-time error.&lt;/p&gt;
+&lt;p&gt;Dynamic typing does not impose any typing constraints at compile time.&lt;/p&gt;
+&lt;h3 id="weak-and-strong-typing"&gt;Weak and strong typing&lt;/h3&gt;
+&lt;p&gt;Note that although a type system is either dynamic (type checking at run time) or static(type checking at compile time), its strength lies on a spectrum: the more implicit conversions it performs, the weaker it is.&lt;/p&gt;</description></item><item><title>How Hot Reloading with Webpack and Phoenix</title><link>//tywhisky.github.io/posts/how-hot-reloading-for-phoenix-project/</link><pubDate>Fri, 15 Oct 2021 11:30:03 +0000</pubDate><guid>//tywhisky.github.io/posts/how-hot-reloading-for-phoenix-project/</guid><description>&lt;h3 id="live-reloading-和-hot-reloading-的区别"&gt;Live Reloading 和 Hot Reloading 的区别&lt;/h3&gt;
+&lt;p&gt;Live Reloading是在浏览器进行更改后自动重新加载整个页面，使开发者不再需要切换浏览器手动点击 &lt;code&gt;cmd + r&lt;/code&gt; 。在这点上 Phoenix 通过 Phoenix LiveReload 可以提供开箱即用的支持，通过 &lt;code&gt;mix phx.new&lt;/code&gt; 创建的项目默认配置了 Phoenix LiveReload。&lt;/p&gt;
+&lt;p&gt;但是，Live Reloading依然存在一个缺点，在开发现在越来越高度交互的 Web 应用时，频繁的代码改动与调试，意味着频繁的重新加载整个页面，很多情况你也许只希望修改一些样式，Live Reloading会显得尤为耗时，而为了解决这个问题，Hot Reloading 显得尤为重要。&lt;/p&gt;
+&lt;h3 id="注意事项"&gt;注意事项&lt;/h3&gt;
+&lt;p&gt;本文通过 React + Webpack 进行配置举例（因为自身业务），以前 React 的 Hot Reloading 是通过 &lt;code&gt;HMR&lt;/code&gt; (Hot Module Replacement) 实现的，因为一些&lt;a href="https://github.com/facebook/react/blob/f5d946da6be8d0cefd66ab3d029a55ab54ebb460/packages/react-refresh/README.md"&gt;技术原因&lt;/a&gt;不再使用这种方法。&lt;/p&gt;
+&lt;p&gt;我们将使用 @pmmmwh/react-refresh-webpack-plugin 这个实验性的 Webpack 插件来实现，虽然这个插件在运行一段时间后，&lt;code&gt;webpack-dev-server&lt;/code&gt; 最终会吃掉大量内存，但是依然可以通过合适的配置和手动刷新，使其成为一个强大的工具。&lt;/p&gt;
+&lt;h3 id="npm"&gt;NPM&lt;/h3&gt;
+&lt;p&gt;首先在你的前端项目中执行，如果你是用的是 &lt;code&gt;yarn&lt;/code&gt; 请自行修改命令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npm install --save-dev @pmmmwh/
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;react-refresh-webpack-plugin
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;webpack-dev-server react-refresh
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;react-refresh-typescript
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="webpack-配置"&gt;Webpack 配置&lt;/h3&gt;
+&lt;p&gt;在逻辑结构上我们将把 &lt;code&gt;webpack-dev-server&lt;/code&gt; 置于 Phoenix 应用之前。使 Webpack 能够将 websocket 注入页面，以便在需要进行 Hot Reloading 时通知浏览器。为了更好地理解，我们配置 &lt;code&gt;webpack-dev-server&lt;/code&gt; 启动在 4000 端口并且代理所有的请求到 4001 端口，也就是我们 Phoenix 应用运行的端口。所以现在浏览器仍然像 &lt;code&gt;http://localhost:4000&lt;/code&gt; 发出请求，但是将会被透明代理到 Phoenix。&lt;/p&gt;</description></item><item><title>Why Blog?</title><link>//tywhisky.github.io/posts/why-blog/</link><pubDate>Tue, 15 Jun 2021 12:53:57 +0800</pubDate><guid>//tywhisky.github.io/posts/why-blog/</guid><description>&lt;h1 id="积累"&gt;积累&lt;/h1&gt;
+&lt;p&gt;过去我也曾用 Hexo 搭建过博客，但那时我处在各种意义上的初级阶段，搭一个博客更多可能只是为了好玩，
+随便写了几篇没什么营养和价值的文章后就不了了之了，而这次，我想认真的在这里给自己做一个积累。&lt;/p&gt;
+&lt;p&gt;另一方面，因为 Org-Mode 的出现让我十分想通过它来实践 GTD ，我觉得博客会是其中一种不错的方式。&lt;/p&gt;
+&lt;h1 id="分享"&gt;分享&lt;/h1&gt;
+&lt;p&gt;我关注的一些牛人，用博客的方式输出着自己的能量，我自己就是受到他们的影响而不断前进。&lt;/p&gt;
+&lt;p&gt;无论我目前是否有足够的水准，我希望能成为像他们一样的人。&lt;/p&gt;
+&lt;h1 id="锻炼"&gt;锻炼&lt;/h1&gt;
+&lt;p&gt;实际生活中英文书写的锻炼机会非常的少，出现最多的场景可能还是 &lt;code&gt;git commit&lt;/code&gt; 中的几句描述。&lt;/p&gt;
+&lt;p&gt;希望能够通过英文博文的方式，来锻炼自己的英文水平。&lt;/p&gt;</description></item><item><title/><link>//tywhisky.github.io/posts/whats-formatter/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/whats-formatter/</guid><description>&lt;h2 id="为什么编辑器-format-不可靠"&gt;为什么编辑器 Format “不可靠”&lt;/h2&gt;
+&lt;h3 id="1-编辑器拥有自己的-format-规则"&gt;1. 编辑器拥有自己的 Format 规则&lt;/h3&gt;
+&lt;p&gt;比如 VSCode 默认 TypeScript Format 规则：当我们不为 ts 文件指定任何 formatter 的情况下，默认将会按照这个规则执行 Code Format。&lt;/p&gt;
+&lt;p&gt;比如我这里设置结尾不允许存在分号，那么 &lt;code&gt;onSave&lt;/code&gt; Format 的时候我们每次保存就会去掉所有的分号，但是如果我们定义的 prettier 配置文件中要求分号，那么我们就会将不同风格的代码提交上去，如果之后有人跑了全局 Format，就会出现非自己的改动，那才会是问题所在。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;VSCode 配置
+&lt;img src="image.png" alt="Alt text"&gt;
+Prettier 规则
+&lt;img src="image-1.png" alt="Alt text"&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当然这里的问题并不是编辑器的缺陷抑或是全局 Format 的缺陷，问题的重点是 .vscode 等个人编辑器配置文件我们一般是不纳入 git 的版本管理，而不像 .prettierrc.json(prettier 规则配置文件) 拥有 git 记录，因此在我们引入了 prettier 的情况下，我们应该以 prettier 的规则为准（&lt;strong&gt;否则就不应该引入&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;当然通过在 Readme 中约束团队进行正确的编辑器 Format 配置也是一种方式，但是在前者（Prettier）已经存在的情况下，这种方式显然更风险和复杂，特别是每个人的编辑器可能还不同。&lt;/p&gt;
+&lt;h3 id="2-编辑器插件版本导致的-format-结果差异"&gt;2. 编辑器插件版本导致的 Format 结果差异&lt;/h3&gt;
+&lt;p&gt;要在编辑器中解决上诉的问题也很简单，安装 Prettier 插件，并且在默认 Formatter 处选中：
+&lt;img src="image-2.png" alt="Alt text"&gt;
+&lt;img src="image-3.png" alt="Alt text"&gt;
+那么很显然这就会带来新的隐患：插件版本不同导致的 Format 风格差异。比如 A 成员用 Prettier 3.0，B 成员用 2.8，同一文件格式化结果不同。&lt;/p&gt;</description></item></channel></rss>

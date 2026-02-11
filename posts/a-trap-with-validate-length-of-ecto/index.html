@@ -1,48 +1,19 @@
-<!DOCTYPE html>
-<html><head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>A trap with validate_length/3 of Ecto - Happy Coding</title><link rel="icon" type="image/png" href=favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="
+<!doctype html><html><head lang=en><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>A trap with validate_length/3 of Ecto - Happy Coding</title><link rel=icon type=image/png href=favicon.ico><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
 
 validate_length/3
 
 
 
-Quote to Ecto&#39;s document, this is the describe:
+Quote to Ecto's document, this is the describe:
 
 @spec validate_length(t(), atom(), Keyword.t()) :: t()
 Validates a change is a string or list of the given length.
 
-Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes)." />
-	<meta property="og:image" content="//localhost:1313/"/>
-	<meta property="og:url" content="//localhost:1313/posts/a-trap-with-validate-length-of-ecto/">
-  <meta property="og:site_name" content="Happy Coding">
-  <meta property="og:title" content="A trap with validate_length/3 of Ecto">
-  <meta property="og:description" content="validate_length/3 Quote to Ecto&#39;s document, this is the describe:
+Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it's likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes)."><meta property="og:image" content="//tywhisky.github.io/"><meta property="og:url" content="//tywhisky.github.io/posts/a-trap-with-validate-length-of-ecto/"><meta property="og:site_name" content="Happy Coding"><meta property="og:title" content="A trap with validate_length/3 of Ecto"><meta property="og:description" content="validate_length/3 Quote to Ecto's document, this is the describe:
 @spec validate_length(t(), atom(), Keyword.t()) :: t() Validates a change is a string or list of the given length.
-Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-09-07T00:00:00+00:00">
-    <meta property="article:modified_time" content="2022-09-07T00:00:00+00:00">
-    <meta property="article:tag" content="Elixir Ecto">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="A trap with validate_length/3 of Ecto">
-  <meta name="twitter:description" content="validate_length/3 Quote to Ecto&#39;s document, this is the describe:
+Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it's likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes)."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-09-07T00:00:00+00:00"><meta property="article:modified_time" content="2022-09-07T00:00:00+00:00"><meta property="article:tag" content="Elixir Ecto"><meta name=twitter:card content="summary"><meta name=twitter:title content="A trap with validate_length/3 of Ecto"><meta name=twitter:description content="validate_length/3 Quote to Ecto's document, this is the describe:
 @spec validate_length(t(), atom(), Keyword.t()) :: t() Validates a change is a string or list of the given length.
-Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).">
-
-        <link href="//localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
-	
-
-	
-	<link rel="stylesheet" type="text/css" media="screen" href="//localhost:1313/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css" />
-		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//localhost:1313/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
-		src="//localhost:1313/js/MathJax.js"></script>
-		
-		<script type="text/x-mathjax-config">
+Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it's likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes)."><link href=//tywhisky.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css rel=stylesheet><link rel=stylesheet type=text/css media=screen href=//tywhisky.github.io/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css><link id=darkModeStyle rel=stylesheet type=text/css href=//tywhisky.github.io/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css media="(prefers-color-scheme: dark)"><script type=text/javascript src=//tywhisky.github.io/js/MathJax.js></script><script type=text/x-mathjax-config>
 		MathJax.Hub.Config({
 			tex2jax: {
 				inlineMath: [['$','$'], ['\\(','\\)']],
@@ -54,163 +25,23 @@ Note that the length of a string is counted in graphemes by default. If using th
 						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
 			}
 		});
-		</script><link rel="stylesheet" href="//localhost:1313/katex/katex.min.css ">
-		<script defer src="//localhost:1313/katex/katex.min.js"></script>
-		<script defer src="//localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-		
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-					renderMathInElement(document.body, {
-							delimiters: [
-									{left: "$$", right: "$$", display: true},
-									{left: "$", right: "$", display: false}
-							]
-					});
-			});
-		</script>
-</head>
-<body>
-        <div class="content"><header>
-	<div class="main">
-		<a href="//localhost:1313/">Happy Coding</a>
-	</div>
-	<nav>
-		
-		<a href="../../">Home</a>
-		
-		<a href="../../posts">All posts</a>
-		
-		<a href="../../about">About</a>
-		
-		<a href="../../tags">Tags</a>
-		
-		
-	</nav>
-</header>
-
-<main>
-  <article>
-    <div class="post-container">
-      
-      <div class="post-content">
-        <div class="title">
-          <h1 class="title">A trap with validate_length/3 of Ecto</h1>
-          <div class="meta">Posted on Sep 7, 2022</div>
-        </div>
-        
-        <section class="body">
-          
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-validate_length/3
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<p>
-Quote to Ecto&#39;s document, this is the describe:</p>
-<blockquote>
-<p>@spec validate_length(t(), atom(), Keyword.t()) :: t()
-Validates a change is a string or list of the given length.</p>
-<p>
-Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).</p>
-</blockquote>
-<p>
-It&#39;s useful to validate any fields with the type of list.</p>
-<p>
-But there is a hidden detail: validate_length/3 just validate the fields in `changes`.</p>
-<p>
-Well, maybe you&#39;re thinking to yourself, &#34;Isn&#39;t that nonsense? Don&#39;t be in a hurry, think about it, if you set the default value
+		</script><link rel=stylesheet href=//tywhisky.github.io/katex/katex.min.css><script defer src=//tywhisky.github.io/katex/katex.min.js></script><script defer src=//tywhisky.github.io/katex/auto-render.min.js onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></head><body><div class=content><header><div class=main><a href=//tywhisky.github.io/>Happy Coding</a></div><nav><a href=//tywhisky.github.io/>Home</a>
+<a href=//tywhisky.github.io/posts>All posts</a>
+<a href=//tywhisky.github.io/about>About</a>
+<a href=//tywhisky.github.io/tags>Tags</a></nav></header><main><article><div class=post-container><div class=post-content><div class=title><h1 class=title>A trap with validate_length/3 of Ecto</h1><div class=meta>Posted on Sep 7, 2022</div></div><section class=body><div id=outline-container-headline-1 class=outline-3><h3 id=headline-1>validate_length/3</h3><div id=outline-text-headline-1 class=outline-text-3><p>Quote to Ecto's document, this is the describe:</p><blockquote><p>@spec validate_length(t(), atom(), Keyword.t()) :: t()
+Validates a change is a string or list of the given length.</p><p>Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it's likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).</p></blockquote><p>It's useful to validate any fields with the type of list.</p><p>But there is a hidden detail: validate_length/3 just validate the fields in `changes`.</p><p>Well, maybe you're thinking to yourself, "Isn't that nonsense? Don't be in a hurry, think about it, if you set the default value
 for the field in the schema, and the given value of the fields in params be the same as the dafault, what will be happened? Yes,
-validate_length/3 will not valid this field, you got no errors.</p>
-<p>
-This action doesn&#39;t sound strange. To prevent the happen, I just need to remove the default for field. Actually, this problem is common,
-you can find the offical answer in this <a href="https://github.com/elixir-ecto/ecto/issues/3189">issue</a>.</p>
-<p>
-Slow down, just remove the default is the best way to solve? No! It broken the consistency of data, that&#39;s also why
-we set the default.</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
-Solution
-</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
-<div class="src src-elixir">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span>  <span style="color:#66d9ef">def</span> validate_length_include_existing(changeset, field, opts) <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>    validate_value <span style="color:#f92672">=</span> get_field(changeset, field)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    changeset
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">|&gt;</span> force_change(field, validate_value)
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">|&gt;</span> validate_length(field, opts)
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">|&gt;</span> <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">do</span>
-</span></span><span style="display:flex;"><span>      %{<span style="color:#e6db74">valid?</span>: <span style="color:#66d9ef">true</span>} <span style="color:#f92672">-&gt;</span> changeset
-</span></span><span style="display:flex;"><span>      %{<span style="color:#e6db74">errors</span>: errors} <span style="color:#f92672">-&gt;</span> %{changeset <span style="color:#f92672">|</span> <span style="color:#e6db74">valid?</span>: <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">errors</span>: errors}
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span></span></span></code></pre></div>
-</div>
-<div id="outline-container-headline-3" class="outline-4">
-<h4 id="headline-3">
-Why just get_field/2 ?
-</h4>
-<div id="outline-text-headline-3" class="outline-text-4">
-<p>
-get_field/2 will get the value from changes first, if nil, from data, if else nil, from the default of field in schma. This is exactly what we need.</p>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-4">
-<h4 id="headline-4">
-Why case do?
-</h4>
-<div id="outline-text-headline-4" class="outline-text-4">
-<p>
-Actually the changeset which forced_change is different with the origin one. We just need the error and do not need the changes.</p>
-</div>
-</div>
-</div>
-</div>
-
-        </section>
-        <div class="post-tags">
-          
-          
-          
-        </div>
-      </div>
-
-      
-      
-    </div>
-
-    <div id="disqus_thread"></div>
-<script type="text/javascript">
-    (function () {
-        
-        
-        if (window.location.hostname == "localhost")
-            return;
-
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        var disqus_shortname = 'yourDisqusShortname';
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
-        Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</article>
-</main>
-<footer>
-  <div style="display:flex"><a class="soc" href="https://github.com/tywhisky" rel="me" title="GitHub"><svg class="feather">
-       <use href="../../svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
-    </svg></a><a class="border"></a></div>
-  <div class="footer-info">
-    2026  Tainef |  <a
-      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
-  </div>
-</footer>
-
-</div>
-    </body>
-</html>
+validate_length/3 will not valid this field, you got no errors.</p><p>This action doesn't sound strange. To prevent the happen, I just need to remove the default for field. Actually, this problem is common,
+you can find the offical answer in this <a href=https://github.com/elixir-ecto/ecto/issues/3189>issue</a>.</p><p>Slow down, just remove the default is the best way to solve? No! It broken the consistency of data, that's also why
+we set the default.</p></div></div><div id=outline-container-headline-2 class=outline-3><h3 id=headline-2>Solution</h3><div id=outline-text-headline-2 class=outline-text-3><div class="src src-elixir"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-elixir data-lang=elixir><span style=display:flex><span>  <span style=color:#66d9ef>def</span> validate_length_include_existing(changeset, field, opts) <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>    validate_value <span style=color:#f92672>=</span> get_field(changeset, field)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    changeset
+</span></span><span style=display:flex><span>    <span style=color:#f92672>|&gt;</span> force_change(field, validate_value)
+</span></span><span style=display:flex><span>    <span style=color:#f92672>|&gt;</span> validate_length(field, opts)
+</span></span><span style=display:flex><span>    <span style=color:#f92672>|&gt;</span> <span style=color:#66d9ef>case</span> <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>      %{<span style=color:#e6db74>valid?</span>: <span style=color:#66d9ef>true</span>} <span style=color:#f92672>-&gt;</span> changeset
+</span></span><span style=display:flex><span>      %{<span style=color:#e6db74>errors</span>: errors} <span style=color:#f92672>-&gt;</span> %{changeset <span style=color:#f92672>|</span> <span style=color:#e6db74>valid?</span>: <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>errors</span>: errors}
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>end</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>end</span></span></span></code></pre></div></div><div id=outline-container-headline-3 class=outline-4><h4 id=headline-3>Why just get_field/2 ?</h4><div id=outline-text-headline-3 class=outline-text-4><p>get_field/2 will get the value from changes first, if nil, from data, if else nil, from the default of field in schma. This is exactly what we need.</p></div></div><div id=outline-container-headline-4 class=outline-4><h4 id=headline-4>Why case do?</h4><div id=outline-text-headline-4 class=outline-text-4><p>Actually the changeset which forced_change is different with the origin one. We just need the error and do not need the changes.</p></div></div></div></div></section><div class=post-tags></div></div></div><div id=disqus_thread></div><script type=text/javascript>(function(){if(window.location.hostname=="localhost")return;var t,e=document.createElement("script");e.type="text/javascript",e.async=!0,t="yourDisqusShortname",e.src="//"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by
+Disqus.</a></noscript><a href=http://disqus.com/ class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></article></main><footer><div style=display:flex><a class=soc href=https://github.com/tywhisky rel=me title=GitHub><svg class="feather"><use href="//tywhisky.github.io/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github"/></svg></a><a class=border></a></div><div class=footer-info>2026 Tainef | <a href=https://github.com/athul/archie>Archie Theme</a> | Built with <a href=https://gohugo.io>Hugo</a></div></footer></div></body></html>

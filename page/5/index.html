@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head lang="en"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Happy Coding | Home </title><link rel="icon" type="image/png" href=favicon.ico /><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta property="og:image" content="//localhost:1313/"/>
-	<link rel="alternate" type="application/rss+xml" href="//localhost:1313/index.xml" title="Happy Coding" />
-	<meta property="og:url" content="//localhost:1313/">
-  <meta property="og:site_name" content="Happy Coding">
-  <meta property="og:title" content="Happy Coding">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Happy Coding">
-
-        <link href="//localhost:1313/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
-	
-
-	
-	<link rel="stylesheet" type="text/css" media="screen" href="//localhost:1313/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css" />
-		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="//localhost:1313/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css" media="(prefers-color-scheme: dark)"  /><script type="text/javascript"
-		src="//localhost:1313/js/MathJax.js"></script>
-		
-		<script type="text/x-mathjax-config">
+<!doctype html><html><head lang=en><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>Happy Coding | Home</title><link rel=icon type=image/png href=favicon.ico><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content><meta property="og:image" content="//tywhisky.github.io/"><link rel=alternate type=application/rss+xml href=//tywhisky.github.io/index.xml title="Happy Coding"><meta property="og:url" content="//tywhisky.github.io/"><meta property="og:site_name" content="Happy Coding"><meta property="og:title" content="Happy Coding"><meta property="og:locale" content="en_us"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Happy Coding"><link href=//tywhisky.github.io/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css rel=stylesheet><link rel=stylesheet type=text/css media=screen href=//tywhisky.github.io/css/main.a87126a5d38398207e58225b2d1a9faf97f546982f44b3ffb9715a264da36c90.css><link id=darkModeStyle rel=stylesheet type=text/css href=//tywhisky.github.io/css/dark.f163b79c6de51d14a766ff9f0563053de7f06a4d1bf7b85a59608bf96e566710.css media="(prefers-color-scheme: dark)"><script type=text/javascript src=//tywhisky.github.io/js/MathJax.js></script><script type=text/x-mathjax-config>
 		MathJax.Hub.Config({
 			tex2jax: {
 				inlineMath: [['$','$'], ['\\(','\\)']],
@@ -35,172 +10,18 @@
 						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
 			}
 		});
-		</script><link rel="stylesheet" href="//localhost:1313/katex/katex.min.css ">
-		<script defer src="//localhost:1313/katex/katex.min.js"></script>
-		<script defer src="//localhost:1313/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-		
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-					renderMathInElement(document.body, {
-							delimiters: [
-									{left: "$$", right: "$$", display: true},
-									{left: "$", right: "$", display: false}
-							]
-					});
-			});
-		</script>
-</head>
-
-	<body>
-		<div class="content">
-			<header>
-	<div class="main">
-		<a href="//localhost:1313/">Happy Coding</a>
-	</div>
-	<nav>
-		
-		<a href="../../">Home</a>
-		
-		<a href="../../posts">All posts</a>
-		
-		<a href="../../about">About</a>
-		
-		<a href="../../tags">Tags</a>
-		
-		
-	</nav>
-</header>
-
-			
-			<main class="list">
-				<div class="site-description"><p>Hey, I am TianYu, a web developer with fanatical code cleanliness. Growing up, living, and working in Shanghai. <!-- raw HTML omitted --><!-- raw HTML omitted --> It&rsquo;s an honour to me that you here. This blog is made up with <!-- raw HTML omitted -->Emacs<!-- raw HTML omitted --> (<!-- raw HTML omitted -->Org mode<!-- raw HTML omitted -->) and <!-- raw HTML omitted -->Hugo<!-- raw HTML omitted -->, it is used to record my life, study and programming. Feel free to linger and explore! <!-- raw HTML omitted --><!-- raw HTML omitted --> Outside of programming, I enjoy playing badminton and video games with any type.  If you are interested in these too, I would be glad to chat with you!</p></div>
-				
-				
-				
-				<section class="list-item">
-					<h1 class="title"><a href="../../posts/a-trap-with-validate-length-of-ecto/">A trap with validate_length/3 of Ecto</a></h1>
-					<time>Sep 7, 2022</time>
-					<br><div class="description">
-	
-	<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-validate_length/3
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<p>
-Quote to Ecto&#39;s document, this is the describe:</p>
-<blockquote>
-<p>@spec validate_length(t(), atom(), Keyword.t()) :: t()
-Validates a change is a string or list of the given length.</p>
-<p>
-Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).</p>&hellip;
-	
-</div>
-					<a class="readmore" href="../../posts/a-trap-with-validate-length-of-ecto/">Read more ⟶</a>
-				</section>
-				
-				<section class="list-item">
-					<h1 class="title"><a href="../../posts/the-difference-of-mount-and-v-for-docker/">[Docker] Differences between -v and --mount</a></h1>
-					<time>Aug 13, 2022</time>
-					<br><div class="description">
-	
-	<p>
-Last week, I wanted to upgrade the version of my livebook in Docker. And I had a very strange problem.
-I did the following:</p>
-<ul>
-<li><code class="verbatim">ssh</code> my server</li>
-<li>docker container stop &amp; rm</li>
-<li>docker images pull livebook/livebook:latest</li>
-<li>docker run</li>
-</ul>
-<p>No errors occurred during this period and everything looks good.
+		</script><link rel=stylesheet href=//tywhisky.github.io/katex/katex.min.css><script defer src=//tywhisky.github.io/katex/katex.min.js></script><script defer src=//tywhisky.github.io/katex/auto-render.min.js onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></head><body><div class=content><header><div class=main><a href=//tywhisky.github.io/>Happy Coding</a></div><nav><a href=//tywhisky.github.io/>Home</a>
+<a href=//tywhisky.github.io/posts>All posts</a>
+<a href=//tywhisky.github.io/about>About</a>
+<a href=//tywhisky.github.io/tags>Tags</a></nav></header><main class=list><div class=site-description><p>Hey, I am TianYu, a web developer with fanatical code cleanliness. Growing up, living, and working in Shanghai. It&rsquo;s an honour to me that you here. This blog is made up with Emacs (Org mode) and Hugo, it is used to record my life, study and programming. Feel free to linger and explore! Outside of programming, I enjoy playing badminton and video games with any type. If you are interested in these too, I would be glad to chat with you!</p></div><section class=list-item><h1 class=title><a href=//tywhisky.github.io/posts/a-trap-with-validate-length-of-ecto/>A trap with validate_length/3 of Ecto</a></h1><time>Sep 7, 2022</time><br><div class=description><div id=outline-container-headline-1 class=outline-3><h3 id=headline-1>validate_length/3</h3><div id=outline-text-headline-1 class=outline-text-3><p>Quote to Ecto's document, this is the describe:</p><blockquote><p>@spec validate_length(t(), atom(), Keyword.t()) :: t()
+Validates a change is a string or list of the given length.</p><p>Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it's likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).</p>&mldr;</div><a class=readmore href=//tywhisky.github.io/posts/a-trap-with-validate-length-of-ecto/>Read more ⟶</a></section><section class=list-item><h1 class=title><a href=//tywhisky.github.io/posts/the-difference-of-mount-and-v-for-docker/>[Docker] Differences between -v and --mount</a></h1><time>Aug 13, 2022</time><br><div class=description><p>Last week, I wanted to upgrade the version of my livebook in Docker. And I had a very strange problem.
+I did the following:</p><ul><li><code class=verbatim>ssh</code> my server</li><li>docker container stop & rm</li><li>docker images pull livebook/livebook:latest</li><li>docker run</li></ul><p>No errors occurred during this period and everything looks good.
 But when I open the page of livebook, the update prompt is still visiting the screen.
-Then I go to the settings page. The version is still 0.6.1(the latest version is 0.6.3). </p>&hellip;
-	
-</div>
-					<a class="readmore" href="../../posts/the-difference-of-mount-and-v-for-docker/">Read more ⟶</a>
-				</section>
-				
-				<section class="list-item">
-					<h1 class="title"><a href="../../posts/the-road-of-code-review-for-me/">The road of Code Review for me</a></h1>
-					<time>Aug 13, 2022</time>
-					<br><div class="description">
-	
-	<p>
-在我作为工程师在最初期，一直都是一些更有经验的老师傅 Review 我的代码，提出他们的意见，那时候，我对此也没有自己是否也应该 
-Review 他人的代码的想法，一方面不了解 Code Review 是一件不比亲自开发更容易的事情，另一方面那时的我忙于 “吸收” ，也无暇顾及。</p>
-<p>
-但是随着时间的增长，我意识到了我对 Code Review 这方面的欠缺，当我不得不开始 Review 同事的代码时，我发现我遇到的最大的问题
-是我没有任何想法，或是说即便有想法也会被我自洽的解释所忽略。这让我感觉很奇怪，因为我写自己的代码总是了然于胸，并且往往会在许多地方纠结不已，我不免怀疑我是否这段时间都毫无提升？</p>
-<p>
-为了解决这个问题，我开始在 Review 别人代码的时候只关注需求，按照自己的理解在 Draft 或者大脑中实现一遍 “是我的话，会怎么做”，
+Then I go to the settings page. The version is still 0.6.1(the latest version is 0.6.3).</p>&mldr;</div><a class=readmore href=//tywhisky.github.io/posts/the-difference-of-mount-and-v-for-docker/>Read more ⟶</a></section><section class=list-item><h1 class=title><a href=//tywhisky.github.io/posts/the-road-of-code-review-for-me/>The road of Code Review for me</a></h1><time>Aug 13, 2022</time><br><div class=description><p>在我作为工程师在最初期，一直都是一些更有经验的老师傅 Review 我的代码，提出他们的意见，那时候，我对此也没有自己是否也应该
+Review 他人的代码的想法，一方面不了解 Code Review 是一件不比亲自开发更容易的事情，另一方面那时的我忙于 “吸收” ，也无暇顾及。</p><p>但是随着时间的增长，我意识到了我对 Code Review 这方面的欠缺，当我不得不开始 Review 同事的代码时，我发现我遇到的最大的问题
+是我没有任何想法，或是说即便有想法也会被我自洽的解释所忽略。这让我感觉很奇怪，因为我写自己的代码总是了然于胸，并且往往会在许多地方纠结不已，我不免怀疑我是否这段时间都毫无提升？</p><p>为了解决这个问题，我开始在 Review 别人代码的时候只关注需求，按照自己的理解在 Draft 或者大脑中实现一遍 “是我的话，会怎么做”，
 然后回头带着自己的 Style 和遇到的问题再正式开始 Review，这个方法很有效，只有一个缺点，就是耗费我个人的成本十分巨大，而如何
-解决这个问题就变成了我必须处理的事情。</p>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-What&#39;s the point
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<p>
-按照我的观察，通常每个人的 Review 侧重都是会有区别的。与我个人而言，我认为优秀的代码的特性应该是 “可读性” 大于 “必要性能”。
-因此我会优先 Review 代码的 “可读性”。</p>
-<p>
-可读性其实是一个宽大的概念，其中不止包括了</p>
-<ul>
-<li>Function 和 Module 的 “有意义的” 命名</li>
-<li>Function 和 Module 合理的结构</li>
-<li>在必要的地方是否有合适的注释</li>
-<li>PR 整体的流程是否符合常规逻辑和直觉</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
-My Solution
-</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
-<ol>
-<li>结合需求和 Diff 最快速的了解这个 Pull Request 的流程而不去管细节实现。</li>
-<li>思考流程上是否存在问题，如果没有则按照流程 Review 具体实现。</li>
-<li>先看 Module / Function 的名字，在心中有一个自己的判断，再去对照具体实现和刚才的判断作对比。</li>
-<li>考虑性能和检查测试的覆盖。</li>
-</ol>
-<p>以上几步中其实都有和 Author 思路作对比的过程，因此最重要的一点是，任何我无法理解的地方，我都
-会留下 comment ，而不是强行带入 Author ，自己给出自洽的解释，亦或是过分用力的理解这部分的代码。</p>&hellip;
-	
-</div>
-					<a class="readmore" href="../../posts/the-road-of-code-review-for-me/">Read more ⟶</a>
-				</section>
-				
-				
-
-<ul class="pagination">
-	<span class="page-item page-prev">
-	
-    <a href="../../page/4/" class="page-link" aria-label="Previous"><span aria-hidden="true">← Prev</span></a>
-	
-	</span>
-	<span class="page-item page-next">
-	
-    <a href="../../page/6/" class="page-link" aria-label="Next"><span aria-hidden="true">Next →</span></a>
-	
-	</span>
-</ul>
-
-
-			</main>
-			<footer>
-  <div style="display:flex"><a class="soc" href="https://github.com/tywhisky" rel="me" title="GitHub"><svg class="feather">
-       <use href="../../svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github" />
-    </svg></a><a class="border"></a></div>
-  <div class="footer-info">
-    2026  Tainef |  <a
-      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
-  </div>
-</footer>
-
-
-		</div>
-		
-	</body>
-</html>
+解决这个问题就变成了我必须处理的事情。</p><div id=outline-container-headline-1 class=outline-3><h3 id=headline-1>What's the point</h3><div id=outline-text-headline-1 class=outline-text-3><p>按照我的观察，通常每个人的 Review 侧重都是会有区别的。与我个人而言，我认为优秀的代码的特性应该是 “可读性” 大于 “必要性能”。
+因此我会优先 Review 代码的 “可读性”。</p><p>可读性其实是一个宽大的概念，其中不止包括了</p><ul><li>Function 和 Module 的 “有意义的” 命名</li><li>Function 和 Module 合理的结构</li><li>在必要的地方是否有合适的注释</li><li>PR 整体的流程是否符合常规逻辑和直觉</li></ul></div></div><div id=outline-container-headline-2 class=outline-3><h3 id=headline-2>My Solution</h3><div id=outline-text-headline-2 class=outline-text-3><ol><li>结合需求和 Diff 最快速的了解这个 Pull Request 的流程而不去管细节实现。</li><li>思考流程上是否存在问题，如果没有则按照流程 Review 具体实现。</li><li>先看 Module / Function 的名字，在心中有一个自己的判断，再去对照具体实现和刚才的判断作对比。</li><li>考虑性能和检查测试的覆盖。</li></ol><p>以上几步中其实都有和 Author 思路作对比的过程，因此最重要的一点是，任何我无法理解的地方，我都
+会留下 comment ，而不是强行带入 Author ，自己给出自洽的解释，亦或是过分用力的理解这部分的代码。</p>&mldr;</div><a class=readmore href=//tywhisky.github.io/posts/the-road-of-code-review-for-me/>Read more ⟶</a></section><ul class=pagination><span class="page-item page-prev"><a href=//tywhisky.github.io/page/4/ class=page-link aria-label=Previous><span aria-hidden=true>← Prev</span></a>
+</span><span class="page-item page-next"><a href=//tywhisky.github.io/page/6/ class=page-link aria-label=Next><span aria-hidden=true>Next →</span></a></span></ul></main><footer><div style=display:flex><a class=soc href=https://github.com/tywhisky rel=me title=GitHub><svg class="feather"><use href="//tywhisky.github.io/svg/feather-sprite.51cf5647cb1987f769b616558f2620fd9423d72058490231b391bf6aa3744b55.svg#github"/></svg></a><a class=border></a></div><div class=footer-info>2026 Tainef | <a href=https://github.com/athul/archie>Archie Theme</a> | Built with <a href=https://gohugo.io>Hugo</a></div></footer></div></body></html>

@@ -1,20 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Note on Happy Coding</title>
-    <link>//localhost:1313/tags/note/</link>
-    <description>Recent content in Note on Happy Coding</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>Tainef</copyright>
-    <lastBuildDate>Fri, 13 May 2022 16:53:57 +0800</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/note/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[Note] Types of type systems</title>
-      <link>//localhost:1313/posts/notedynamic-or-static--strong-or-weak/</link>
-      <pubDate>Fri, 13 May 2022 16:53:57 +0800</pubDate>
-      <guid>//localhost:1313/posts/notedynamic-or-static--strong-or-weak/</guid>
-      <description>&lt;h3 id=&#34;dynamic-and-static-typing&#34;&gt;Dynamic and static typing&lt;/h3&gt;&#xA;&lt;p&gt;With static typing, type checking is performed at compile time. Dynamic typing, on the other hand, defers type checking to the run time, so type mismatches become run-time error.&lt;/p&gt;&#xA;&lt;p&gt;Dynamic typing does not impose any typing constraints at compile time.&lt;/p&gt;&#xA;&lt;h3 id=&#34;weak-and-strong-typing&#34;&gt;Weak and strong typing&lt;/h3&gt;&#xA;&lt;p&gt;Note that although a type system is either dynamic (type checking at run time) or static(type checking at compile time), its strength lies on a spectrum: the more implicit conversions it performs, the weaker it is.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note on Happy Coding</title><link>//tywhisky.github.io/tags/note/</link><description>Recent content in Note on Happy Coding</description><generator>Hugo</generator><language>en-us</language><copyright>Tainef</copyright><lastBuildDate>Fri, 13 May 2022 16:53:57 +0800</lastBuildDate><atom:link href="//tywhisky.github.io/tags/note/index.xml" rel="self" type="application/rss+xml"/><item><title>[Note] Types of type systems</title><link>//tywhisky.github.io/posts/notedynamic-or-static--strong-or-weak/</link><pubDate>Fri, 13 May 2022 16:53:57 +0800</pubDate><guid>//tywhisky.github.io/posts/notedynamic-or-static--strong-or-weak/</guid><description>&lt;h3 id="dynamic-and-static-typing"&gt;Dynamic and static typing&lt;/h3&gt;
+&lt;p&gt;With static typing, type checking is performed at compile time. Dynamic typing, on the other hand, defers type checking to the run time, so type mismatches become run-time error.&lt;/p&gt;
+&lt;p&gt;Dynamic typing does not impose any typing constraints at compile time.&lt;/p&gt;
+&lt;h3 id="weak-and-strong-typing"&gt;Weak and strong typing&lt;/h3&gt;
+&lt;p&gt;Note that although a type system is either dynamic (type checking at run time) or static(type checking at compile time), its strength lies on a spectrum: the more implicit conversions it performs, the weaker it is.&lt;/p&gt;</description></item></channel></rss>

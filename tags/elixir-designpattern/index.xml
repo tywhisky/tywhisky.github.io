@@ -1,20 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Elixir DesignPattern on Happy Coding</title>
-    <link>//localhost:1313/tags/elixir-designpattern/</link>
-    <description>Recent content in Elixir DesignPattern on Happy Coding</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>Tainef</copyright>
-    <lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/elixir-designpattern/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[Note] Design Patterns in Elixir</title>
-      <link>//localhost:1313/posts/design-pattern-in-elixir/</link>
-      <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/design-pattern-in-elixir/</guid>
-      <description>&lt;p&gt;&#xA;This is a review note for José Valim&amp;#39;s speech on &lt;a href=&#34;https://www.youtube.com/watch?v=agkXUp0hCW8&#34;&gt;YouTube&lt;/a&gt;&lt;/p&gt;&#xA;&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;headline-1&#34;&gt;&#xA;What&amp;#39;s Design Pattern&#xA;&lt;/h2&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;&#xA;&lt;p&gt;&#xA;A famous pic from &lt;a href=&#34;https://www.slideshare.net/slideshow/fp-patterns-ndc-london2013/42373281&#34;&gt;Functional Programming Patterns (NDC London 2013)&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;&lt;img src=&#34;../../pattern-design-between-oop-and-fp.png&#34; alt=&#34;/pattern-design-between-oop-and-fp.png&#34; title=&#34;/pattern-design-between-oop-and-fp.png&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;&#xA;But this might cause some misunderstandings about design patterns. An OOP programmer might think: &amp;#39;Look, how clearly design patterns are defined!&amp;#39; Meanwhile, an FP programmer might think: &amp;#39;Oh, functional programming is much better than OOP programming. There are no design patterns, everything is just functions!&amp;#39;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Elixir DesignPattern on Happy Coding</title><link>//tywhisky.github.io/tags/elixir-designpattern/</link><description>Recent content in Elixir DesignPattern on Happy Coding</description><generator>Hugo</generator><language>en-us</language><copyright>Tainef</copyright><lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="//tywhisky.github.io/tags/elixir-designpattern/index.xml" rel="self" type="application/rss+xml"/><item><title>[Note] Design Patterns in Elixir</title><link>//tywhisky.github.io/posts/design-pattern-in-elixir/</link><pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/design-pattern-in-elixir/</guid><description>&lt;p&gt;
+This is a review note for José Valim&amp;#39;s speech on &lt;a href="https://www.youtube.com/watch?v=agkXUp0hCW8"&gt;YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;div id="outline-container-headline-1" class="outline-2"&gt;
+&lt;h2 id="headline-1"&gt;
+What&amp;#39;s Design Pattern
+&lt;/h2&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-2"&gt;
+&lt;p&gt;
+A famous pic from &lt;a href="https://www.slideshare.net/slideshow/fp-patterns-ndc-london2013/42373281"&gt;Functional Programming Patterns (NDC London 2013)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;img src="//tywhisky.github.io/pattern-design-between-oop-and-fp.png" alt="/pattern-design-between-oop-and-fp.png" title="/pattern-design-between-oop-and-fp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;
+But this might cause some misunderstandings about design patterns. An OOP programmer might think: &amp;#39;Look, how clearly design patterns are defined!&amp;#39; Meanwhile, an FP programmer might think: &amp;#39;Oh, functional programming is much better than OOP programming. There are no design patterns, everything is just functions!&amp;#39;&lt;/p&gt;</description></item></channel></rss>

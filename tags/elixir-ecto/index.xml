@@ -1,20 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Elixir Ecto on Happy Coding</title>
-    <link>//localhost:1313/tags/elixir-ecto/</link>
-    <description>Recent content in Elixir Ecto on Happy Coding</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <copyright>Tainef</copyright>
-    <lastBuildDate>Wed, 07 Sep 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/elixir-ecto/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>A trap with validate_length/3 of Ecto</title>
-      <link>//localhost:1313/posts/a-trap-with-validate-length-of-ecto/</link>
-      <pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/a-trap-with-validate-length-of-ecto/</guid>
-      <description>&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;headline-1&#34;&gt;&#xA;validate_length/3&#xA;&lt;/h3&gt;&#xA;&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;&#xA;&lt;p&gt;&#xA;Quote to Ecto&amp;#39;s document, this is the describe:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;@spec validate_length(t(), atom(), Keyword.t()) :: t()&#xA;Validates a change is a string or list of the given length.&lt;/p&gt;&#xA;&lt;p&gt;&#xA;Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&amp;#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Elixir Ecto on Happy Coding</title><link>//tywhisky.github.io/tags/elixir-ecto/</link><description>Recent content in Elixir Ecto on Happy Coding</description><generator>Hugo</generator><language>en-us</language><copyright>Tainef</copyright><lastBuildDate>Wed, 07 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="//tywhisky.github.io/tags/elixir-ecto/index.xml" rel="self" type="application/rss+xml"/><item><title>A trap with validate_length/3 of Ecto</title><link>//tywhisky.github.io/posts/a-trap-with-validate-length-of-ecto/</link><pubDate>Wed, 07 Sep 2022 00:00:00 +0000</pubDate><guid>//tywhisky.github.io/posts/a-trap-with-validate-length-of-ecto/</guid><description>&lt;div id="outline-container-headline-1" class="outline-3"&gt;
+&lt;h3 id="headline-1"&gt;
+validate_length/3
+&lt;/h3&gt;
+&lt;div id="outline-text-headline-1" class="outline-text-3"&gt;
+&lt;p&gt;
+Quote to Ecto&amp;#39;s document, this is the describe:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;@spec validate_length(t(), atom(), Keyword.t()) :: t()
+Validates a change is a string or list of the given length.&lt;/p&gt;
+&lt;p&gt;
+Note that the length of a string is counted in graphemes by default. If using this validation to match a character limit of a database backend, it&amp;#39;s likely that the limit ignores graphemes and limits the number of unicode characters. Then consider using the :count option to limit the number of codepoints (:codepoints), or limit the number of bytes (:bytes).&lt;/p&gt;</description></item></channel></rss>
